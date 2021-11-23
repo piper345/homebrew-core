@@ -16,17 +16,19 @@ class Gitleaks < Formula
   end
 
   depends_on "go" => :build
+  uses_from_macos "git", since: :big_sur # git 2.27+
 
   def install
-    system "go", "build", "-ldflags", "-X github.com/zricethezav/gitleaks/v#{version.major}/version.Version=#{version}",
-                 *std_go_args
+    ldflags = "-X github.com/zricethezav/gitleaks/v#{version.major}/cmd.Version=#{version}"
+    system "go", "build", *std_go_args(ldflags: ldflags)
   end
 
   test do
-    output = shell_output("#{bin}/gitleaks -r https://github.com/gitleakstest/emptyrepo.git 2>&1", 1)
-    assert_match "level=info msg=\"cloning... https://github.com/gitleakstest/emptyrepo.git\"", output
-    assert_match "level=error msg=\"remote repository is empty\"", output
-
-    assert_equal version, shell_output("#{bin}/gitleaks --version")
+    (testpath/"README").write "ghp_deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+    system "git", "init"
+    system "git", "add", "README"
+    system "git", "commit", "-m", "Initial commit"
+    assert_match(/WRN\S* leaks found: [1-9]/, shell_output("#{bin}/gitleaks detect 2>&1", 1))
+    assert_equal version.to_s, shell_output("#{bin}/gitleaks version").strip
   end
 end
