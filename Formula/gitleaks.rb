@@ -15,7 +15,6 @@ class Gitleaks < Formula
   end
 
   depends_on "go" => :build
-  uses_from_macos "git", since: :big_sur # git 2.27+
 
   def install
     ldflags = "-X github.com/zricethezav/gitleaks/v#{version.major}/cmd.Version=#{version}"
