@@ -116,7 +116,6 @@ class Julia < Formula
 
       libdir.glob(shared_library("*")) do |so|
         (buildpath/"usr/lib").install_symlink so
-        (lib/"julia").install_symlink so
       end
     end
 
