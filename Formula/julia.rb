@@ -55,9 +55,6 @@ class Julia < Formula
   def install
     # Build documentation available at
     # https://github.com/JuliaLang/julia/blob/v#{version}/doc/build/build.md
-    #
-    # Remove `USE_SYSTEM_SUITESPARSE` in 1.7.0
-    # https://github.com/JuliaLang/julia/commit/835f65d9b9f54e0a8dd856fc940a188f87a48cda
     args = %W[
       VERBOSE=1
       USE_BINARYBUILDER=0
@@ -65,13 +62,13 @@ class Julia < Formula
       sysconfdir=#{etc}
       USE_SYSTEM_CSL=1
       USE_SYSTEM_LLVM=1
+      USE_SYSTEM_LIBUNWIND=1
       USE_SYSTEM_PCRE=1
       USE_SYSTEM_OPENLIBM=1
       USE_SYSTEM_BLAS=1
       USE_SYSTEM_LAPACK=1
       USE_SYSTEM_GMP=1
       USE_SYSTEM_MPFR=1
-      USE_SYSTEM_SUITESPARSE=1
       USE_SYSTEM_LIBSUITESPARSE=1
       USE_SYSTEM_UTF8PROC=1
       USE_SYSTEM_MBEDTLS=1
@@ -109,11 +106,6 @@ class Julia < Formula
       %w[sandybridge,-xsaveopt,clone_all haswell,-rdrnd,base(1)]
     end
     args << "JULIA_CPU_TARGET=#{cpu_targets.join(";")}" if build.stable?
-
-    # Stable uses `libosxunwind` which is not in Homebrew/core
-    # https://github.com/JuliaLang/julia/pull/39127
-    args << "USE_SYSTEM_LIBUNWIND=1" if OS.linux? || build.head?
-
     args << "TAGGED_RELEASE_BANNER=Built by #{tap.user} (v#{pkg_version})"
 
     # Help Julia find keg-only dependencies
