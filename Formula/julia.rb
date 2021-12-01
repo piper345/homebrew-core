@@ -123,6 +123,7 @@ class Julia < Formula
 
       libdir.glob(shared_library("*")) do |so|
         cp so, buildpath/"usr/lib"
+        chmod "u=rwx", buildpath/"usr/lib"/so.basename
       end
     end
 
@@ -133,6 +134,11 @@ class Julia < Formula
       # List these two last, since we want keg-only libraries to be found first
       ENV.append "LDFLAGS", "-Wl,-rpath,#{HOMEBREW_PREFIX}/lib"
       ENV.append "LDFLAGS", "-Wl,-rpath,/usr/lib"
+
+      if Hardware::CPU.arm?
+        cp gcclibdir.children.reject(&:directory?), buildpath/"usr/lib"
+        chmod "u=rwx", (buildpath/"usr/lib").children
+      end
     else
       ENV.append "LDFLAGS", "-Wl,-rpath,#{lib}"
       ENV.append "LDFLAGS", "-Wl,-rpath,#{lib}/julia"
