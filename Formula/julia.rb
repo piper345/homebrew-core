@@ -128,8 +128,7 @@ class Julia < Formula
       libdir.glob(shared_library("*")) do |so|
         cp so, buildpath/"usr/lib"
         cp so, buildpath/"usr/lib/julia"
-        chmod "u+w", buildpath/"usr/lib"/so.basename
-        chmod "u+w", buildpath/"usr/lib/julia"/so.basename
+        chmod "u+w", [buildpath/"usr/lib"/so.basename, buildpath/"usr/lib/julia"/so.basename]
       end
     end
 
