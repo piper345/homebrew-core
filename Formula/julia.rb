@@ -43,6 +43,8 @@ class Julia < Formula
     # This dependency can be dropped when upstream resolves
     # https://github.com/JuliaLang/julia/issues/30154
     depends_on "libunwind"
+
+    ignore_missing_libraries(/libLLVM-\d+/)
   end
 
   fails_with gcc: "5"
