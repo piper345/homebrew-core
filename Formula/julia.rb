@@ -13,9 +13,7 @@ class Julia < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "3795863b91230f2507cecc522c1ed7074bd6b6ce0fdafdfdf57349115237a18a"
   end
 
-  depends_on "python@3.9" => :build
-  # https://github.com/JuliaLang/julia/issues/36617
-  depends_on arch: :x86_64
+  depends_on "ca-certificates"
   depends_on "curl"
   depends_on "gcc" # for gfortran
   depends_on "gmp"
@@ -33,6 +31,7 @@ class Julia < Formula
   depends_on "utf8proc"
 
   uses_from_macos "perl" => :build
+  uses_from_macos "python" => :build
   uses_from_macos "zlib"
 
   on_linux do
@@ -51,6 +50,10 @@ class Julia < Formula
     url "https://raw.githubusercontent.com/archlinux/svntogit-community/cec6c2023b66d88c013677bfa9965cce8e49e7ab/trunk/julia-libgit-1.2.patch"
     sha256 "c57ea92a11fa8dac72229e6a912d2372ec0d98d63486426fe3bdeeb795de48f7"
   end
+
+  # Remove broken tests running in `test` block. Reported at:
+  # https://github.com/JuliaLang/julia/issues/43279
+  patch :DATA
 
   def install
     # Build documentation available at
@@ -108,6 +111,10 @@ class Julia < Formula
     args << "JULIA_CPU_TARGET=#{cpu_targets.join(";")}" if build.stable?
     args << "TAGGED_RELEASE_BANNER=Built by #{tap.user} (v#{pkg_version})"
 
+    # Prepare directories we install things into for the build
+    (buildpath/"usr/lib").mkpath
+    (buildpath/"usr/share/julia").mkpath
+
     # Help Julia find keg-only dependencies
     deps.map(&:to_formula).select(&:keg_only?).map(&:opt_lib).each do |libdir|
       ENV.append "LDFLAGS", "-Wl,-rpath,#{libdir}"
@@ -115,7 +122,7 @@ class Julia < Formula
       next unless OS.linux?
 
       libdir.glob(shared_library("*")) do |so|
-        (buildpath/"usr/lib").install_symlink so
+        cp so, buildpath/"usr/lib"
       end
     end
 
@@ -145,8 +152,8 @@ class Julia < Formula
     end
     inreplace (buildpath/"stdlib").glob("**/libLLVM_jll.jl"), /libLLVM-\d+jl\.so/, "libLLVM.so"
 
-    # Make Julia use a CA cert from OpenSSL
-    (buildpath/"usr/share/julia").install_symlink Formula["openssl@1.1"].pkgetc/"cert.pem"
+    # Make Julia use a CA cert from `ca-certificates`
+    cp Formula["ca-certificates"].pkgetc/"cert.pem", buildpath/"usr/share/julia"
 
     system "make", *args, "install"
 
@@ -175,8 +182,8 @@ class Julia < Formula
     # Some Julia packages look for libopenblas as libopenblas64_
     (lib/"julia").install_symlink shared_library("libopenblas") => shared_library("libopenblas64_")
 
-    # Keep Julia's CA cert in sync with OpenSSL's
-    pkgshare.install_symlink Formula["openssl@1.1"].pkgetc/"cert.pem"
+    # Keep Julia's CA cert in sync with ca-certificates'
+    pkgshare.install_symlink Formula["ca-certificates"].pkgetc/"cert.pem"
   end
 
   test do
@@ -229,3 +236,19 @@ class Julia < Formula
     system bin/"julia", *args, "library_test.jl"
   end
 end
+
+__END__
+diff --git a/test/core.jl b/test/core.jl
+index 74edc7c..0d6eaef 100644
+--- a/test/core.jl
++++ b/test/core.jl
+@@ -3516,9 +3516,6 @@ end
+ @test_throws TypeError Union{Int, 1}
+
+ @test_throws ErrorException Vararg{Any,-2}
+-@test_throws ErrorException Vararg{Int, N} where N<:T where T
+-@test_throws ErrorException Vararg{Int, N} where N<:Integer
+-@test_throws ErrorException Vararg{Int, N} where N>:Integer
+
+ mutable struct FooNTuple{N}
+     z::Tuple{Integer, Vararg{Int, N}}
