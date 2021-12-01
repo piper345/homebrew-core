@@ -116,6 +116,7 @@ class Julia < Formula
 
     # Prepare directories we install things into for the build
     (buildpath/"usr/lib").mkpath
+    (buildpath/"usr/lib/julia").mkpath
     (buildpath/"usr/share/julia").mkpath
 
     # Help Julia find keg-only dependencies
