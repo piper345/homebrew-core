@@ -43,8 +43,6 @@ class Julia < Formula
     # This dependency can be dropped when upstream resolves
     # https://github.com/JuliaLang/julia/issues/30154
     depends_on "libunwind"
-
-    ignore_missing_libraries(/libLLVM-\d+/)
   end
 
   fails_with gcc: "5"
@@ -175,6 +173,9 @@ class Julia < Formula
           ln_sf so.relative_path_from(lib/"julia"), lib/"julia"
         end
       end
+
+      libllvm = lib/"julia"/shared_library("libLLVM")
+      (lib/"julia").install_symlink libllvm.basename.to_s => libllvm.realpath.basename.to_s
     end
 
     # Create copies of the necessary gcc libraries in `buildpath/"usr/lib"`
