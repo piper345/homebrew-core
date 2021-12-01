@@ -13,6 +13,9 @@ class Julia < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux: "3795863b91230f2507cecc522c1ed7074bd6b6ce0fdafdfdf57349115237a18a"
   end
 
+  # Requires the M1 fork of GCC to build
+  # https://github.com/JuliaLang/julia/issues/36617
+  depends_on arch: :x86_64
   depends_on "ca-certificates"
   depends_on "curl"
   depends_on "gcc" # for gfortran
@@ -45,10 +48,10 @@ class Julia < Formula
   fails_with gcc: "5"
 
   # Fix compatibility with LibGit2 1.2.0+
-  # https://github.com/JuliaLang/julia/pull/42209
+  # https://github.com/JuliaLang/julia/pull/43250
   patch do
-    url "https://raw.githubusercontent.com/archlinux/svntogit-community/cec6c2023b66d88c013677bfa9965cce8e49e7ab/trunk/julia-libgit-1.2.patch"
-    sha256 "c57ea92a11fa8dac72229e6a912d2372ec0d98d63486426fe3bdeeb795de48f7"
+    url "https://github.com/JuliaLang/julia/commit/4d7fc8465ed9eb820893235a6ff3d40274b643a7.patch?full_index=1"
+    sha256 "3a34a2cd553929c2aee74aba04c8e42ccb896f9d491fb677537cd4bca9ba7caa"
   end
 
   # Remove broken tests running in `test` block. Reported at:
@@ -123,7 +126,9 @@ class Julia < Formula
 
       libdir.glob(shared_library("*")) do |so|
         cp so, buildpath/"usr/lib"
+        cp so, buildpath/"usr/lib/julia"
         chmod "u=rwx", buildpath/"usr/lib"/so.basename
+        chmod "u=rwx", buildpath/"usr/lib/julia"/so.basename
       end
     end
 
@@ -134,11 +139,6 @@ class Julia < Formula
       # List these two last, since we want keg-only libraries to be found first
       ENV.append "LDFLAGS", "-Wl,-rpath,#{HOMEBREW_PREFIX}/lib"
       ENV.append "LDFLAGS", "-Wl,-rpath,/usr/lib"
-
-      if Hardware::CPU.arm?
-        cp gcclibdir.children.reject(&:directory?), buildpath/"usr/lib"
-        chmod "u=rwx", (buildpath/"usr/lib").children
-      end
     else
       ENV.append "LDFLAGS", "-Wl,-rpath,#{lib}"
       ENV.append "LDFLAGS", "-Wl,-rpath,#{lib}/julia"
