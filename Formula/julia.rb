@@ -55,7 +55,7 @@ class Julia < Formula
   end
 
   # Remove broken tests running in `test` block. Reported at:
-  # https://github.com/JuliaLang/julia/issues/43279
+  # https://github.com/JuliaLang/julia/issues/43004
   patch :DATA
 
   def install
