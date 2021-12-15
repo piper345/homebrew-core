@@ -22,12 +22,6 @@ class Consul < Formula
 
   depends_on "go" => :build
 
-  # Support go 1.17, remove after next release
-  patch do
-    url "https://github.com/hashicorp/consul/commit/e43cf462679b6fdd8b15ac7891747e970029ac4a.patch?full_index=1"
-    sha256 "4f0edde54f0caa4c7290b17f2888159a4e0b462b5c890e3068a41d4c3582ca2f"
-  end
-
   def install
     system "go", "build", *std_go_args(ldflags: "-s -w")
   end
