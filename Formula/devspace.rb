@@ -35,7 +35,7 @@ class Devspace < Formula
 
   test do
     help_output = "DevSpace accelerates developing, deploying and debugging applications with Docker and Kubernetes."
-    assert_match help_output, shell_output("#{bin}/devspace help")
+    assert_match help_output, shell_output("#{bin}/devspace --help")
 
     init_help_output = "Initializes a new devspace project"
     assert_match init_help_output, shell_output("#{bin}/devspace init --help")
