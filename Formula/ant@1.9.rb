@@ -1,9 +1,9 @@
 class AntAT19 < Formula
   desc "Java build tool"
   homepage "https://ant.apache.org/"
-  url "https://www.apache.org/dyn/closer.lua?path=ant/binaries/apache-ant-1.9.16-bin.tar.bz2"
-  mirror "https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.16-bin.tar.bz2"
-  sha256 "57ceb0b249708cb28d081a72045657ab067fc4bc4a0d1e4af252496be44c2e66"
+  url "https://www.apache.org/dyn/closer.lua?path=ant/binaries/apache-ant-1.10.12-bin.tar.bz2"
+  mirror "https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.12-bin.tar.bz2"
+  sha256 "276ea73f267a5b1a58f02e2eb5ef594a9b2885e33afb05ef995251d4d18377a6"
   license "Apache-2.0"
 
   livecheck do
