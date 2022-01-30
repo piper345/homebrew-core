@@ -1,11 +1,10 @@
 class SolrAT77 < Formula
   desc "Enterprise search platform from the Apache Lucene project"
   homepage "https://solr.apache.org"
-  url "https://www.apache.org/dyn/closer.lua?path=lucene/solr/7.7.3/solr-7.7.3.tgz"
-  mirror "https://archive.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz"
-  sha256 "3ec67fa430afa5b5eb43bb1cd4a659e56ee9f8541e0116d6080c0d783870baee"
+  url "https://www.apache.org/dyn/closer.lua?path=lucene/solr/8.11.1/solr-8.11.1.tgz"
+  mirror "https://archive.apache.org/dist/lucene/solr/8.11.1/solr-8.11.1.tgz"
+  sha256 "9ec540cbd8e45f3d15a6b615a22939f5e6242ca81099951a47d3c082c79866a9"
   license "Apache-2.0"
-  revision 1
 
   # Remove the `livecheck` block (so the check is automatically skipped) once
   # the 7.7.x series is reported as EOL on the first-party downloads page:
