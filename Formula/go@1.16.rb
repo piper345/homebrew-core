@@ -1,9 +1,9 @@
 class GoAT116 < Formula
   desc "Go programming environment (1.16)"
   homepage "https://golang.org"
-  url "https://golang.org/dl/go1.16.13.src.tar.gz"
-  mirror "https://fossies.org/linux/misc/go1.16.13.src.tar.gz"
-  sha256 "b0926654eaeb01ef43816638f42d7b1681f2d3f41b9559f07735522b7afad41a"
+  url "https://golang.org/dl/go1.17.6.src.tar.gz"
+  mirror "https://fossies.org/linux/misc/go1.17.6.src.tar.gz"
+  sha256 "4dc1bbf3ff61f0c1ff2b19355e6d88151a70126268a47c761477686ef94748c8"
   license "BSD-3-Clause"
 
   livecheck do
