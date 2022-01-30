@@ -20,13 +20,13 @@ class Trino < Formula
   depends_on "openjdk"
 
   resource "trino-src" do
-    url "https://github.com/trinodb/trino/archive/368.tar.gz", using: :nounzip
-    sha256 "c3dc2c8befc0b1d4ac0ebaf1560cd1caa22426a34acd35fac55bdf898a62965c"
+    url "https://github.com/trinodb/trino/archive/369.tar.gz", using: :nounzip
+    sha256 "061d0628d0c80ea406d2d24cd7da5ddbe4f09e99d2882139d194536b9c0504dc"
   end
 
   resource "trino-cli" do
-    url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/368/trino-cli-368-executable.jar"
-    sha256 "87956d931fcd4fc4e7305d85dafd94c13646f9630808632f5d5ed5f1240548d8"
+    url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/369/trino-cli-369-executable.jar"
+    sha256 "b5895f26b0f613ffb3c93f774212f93f9ff084457ac91d1fcf786f4a65ffb77b"
   end
 
   def install
