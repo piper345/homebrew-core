@@ -22,6 +22,6 @@ class Typedb < Formula
   end
 
   test do
-    assert_match "A STRONGLY-TYPED DATABASE", shell_output("#{bin}/typedb server status")
+    assert_match "A STRONGLY-TYPED DATABASE", shell_output("#{bin}/typedb server --help")
   end
 end
