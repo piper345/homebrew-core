@@ -29,11 +29,11 @@ class Global < Formula
     depends_on "libtool" => :build
   end
 
-  depends_on "ctags"
   depends_on "libtool"
   depends_on "ncurses"
   depends_on "python@3.10"
   depends_on "sqlite"
+  depends_on "universal-ctags"
 
   skip_clean "lib/gtags"
 
@@ -56,7 +56,7 @@ class Global < Formula
       --prefix=#{prefix}
       --sysconfdir=#{etc}
       --with-sqlite3=#{Formula["sqlite"].opt_prefix}
-      --with-exuberant-ctags=#{Formula["ctags"].opt_bin}/ctags
+      --with-universal-ctags=#{Formula["universal-ctags"].opt_bin}/ctags
     ]
 
     system "./configure", *args
