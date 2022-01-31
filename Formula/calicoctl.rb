@@ -32,7 +32,7 @@ class Calicoctl < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/calicoctl version", 1)
+    assert_match version.to_s, shell_output("#{bin}/calicoctl version")
 
     assert_match "invalid configuration: no configuration has been provided",
       shell_output("#{bin}/calicoctl datastore migrate lock 2>&1", 1)
