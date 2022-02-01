@@ -23,11 +23,26 @@ class InfluxdbAT1 < Formula
 
   depends_on "go" => :build
   depends_on "pkg-config" => :build
+  depends_on "rust" => :build
+
+  # NOTE: The version here is specified in the go.mod of influxdb.
+  # If you're upgrading to a newer influxdb version, check to see if this needs
+  # to be upgraded too.
+  resource "pkg-config-wrapper" do
+    url "https://github.com/influxdata/pkg-config/archive/refs/tags/v0.2.9.tar.gz"
+    sha256 "25843e58a3e6994bdafffbc0ef0844978a3d1f999915d6770cb73505fcf87e44"
+  end
 
   def install
+    # Set up the influxdata pkg-config wrapper
+    resource("pkg-config-wrapper").stage do
+      system "go", "build", *std_go_args(output: buildpath/"bootstrap/pkg-config")
+    end
+    ENV.prepend_path "PATH", buildpath/"bootstrap"
+
     ldflags = "-s -w -X main.version=#{version}"
 
-    %w[influxd influx influx_stress influx_inspect].each do |f|
+    %w[influxd influx influx_tools influx_inspect].each do |f|
       system "go", "build", *std_go_args(output: bin/f, ldflags: ldflags), "./cmd/#{f}"
     end
 
