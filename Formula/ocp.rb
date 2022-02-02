@@ -20,9 +20,11 @@ class Ocp < Formula
 
   depends_on "pkg-config" => :build
   depends_on "xa" => :build
+  depends_on "cjson"
   depends_on "flac"
   depends_on "freetype"
   depends_on "jpeg-turbo"
+  depends_on "libdiscid"
   depends_on "libpng"
   depends_on "libvorbis"
   depends_on "mad"
@@ -37,24 +39,26 @@ class Ocp < Formula
   uses_from_macos "zlib"
 
   resource "unifont" do
-    url "https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.tar.gz"
-    sha256 "68def7a46df44241c7bf62de7ce0444e8ee9782f159c4b7553da9cfdc00be925"
+    url "https://ftp.gnu.org/gnu/unifont/unifont-14.0.01/unifont-14.0.01.tar.gz"
+    sha256 "7ad1daeecc466685cdb3c60bdd57d6f3553131f076c1a18ab2f95e2020b26d72"
   end
 
   def install
     ENV.deparallelize
 
     # Required for SDL2
+    unifont_version = resource("unifont").version
     resource("unifont").stage do
       cd "font/precompiled" do
-        share.install "unifont-13.0.06.ttf" => "unifont.ttf"
-        share.install "unifont_csur-13.0.06.ttf" => "unifont_csur.ttf"
-        share.install "unifont_upper-13.0.06.ttf" => "unifont_upper.ttf"
+        share.install "unifont-#{unifont_version}.ttf" => "unifont.ttf"
+        share.install "unifont_csur-#{unifont_version}.ttf" => "unifont_csur.ttf"
+        share.install "unifont_upper-#{unifont_version}.ttf" => "unifont_upper.ttf"
       end
     end
 
     args = %W[
       --prefix=#{prefix}
+      --mandir=#{man}
       --without-x11
       --without-desktop_file_install
       --with-unifontdir=#{share}
