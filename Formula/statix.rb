@@ -25,7 +25,7 @@ class Statix < Formula
     (testpath/"test.nix").write <<~EOS
       github:nerdypepper/statix
     EOS
-    assert_match "Found unquoted URI expression", shell_output("#{bin}/statix check test.nix")
+    assert_match "Found unquoted URI expression", shell_output("#{bin}/statix check test.nix", 1)
 
     system bin/"statix", "fix", "test.nix"
     system bin/"statix", "check", "test.nix"
