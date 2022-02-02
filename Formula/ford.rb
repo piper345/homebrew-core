@@ -91,7 +91,7 @@ class Ford < Formula
   def install
     virtualenv_install_with_resources
     doc.install "2008standard.pdf", "2003standard.pdf"
-    pkgshare.install "example-project-file.md"
+    pkgshare.install "example/example-project-file.md"
   end
 
   test do
