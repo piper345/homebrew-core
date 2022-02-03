@@ -58,10 +58,12 @@ class Pillow < Formula
     ]
 
     ENV["MAX_CONCURRENCY"] = ENV.make_jobs.to_s
-    ENV.prepend "CPPFLAGS", "-I#{Formula["tcl-tk"].opt_include}"
-    ENV.prepend "LDFLAGS", "-L#{Formula["tcl-tk"].opt_lib}"
-    ENV.prepend "CPPFLAGS", "-I#{Formula["webp"].opt_include}"
-    ENV.prepend "LDFLAGS", "-L#{Formula["webp"].opt_lib}"
+    deps.each do |dep|
+      next if dep.build? || dep.test?
+
+      ENV.prepend "CPPFLAGS", "-I#{dep.to_formula.opt_include}"
+      ENV.prepend "LDFLAGS", "-L#{dep.to_formula.opt_lib}"
+    end
 
     # Useful in case of build failures.
     inreplace "setup.py", "DEBUG = False", "DEBUG = True"
