@@ -63,6 +63,9 @@ class Pillow < Formula
     ENV.prepend "CPPFLAGS", "-I#{Formula["webp"].opt_include}"
     ENV.prepend "LDFLAGS", "-L#{Formula["webp"].opt_lib}"
 
+    # Useful in case of build failures.
+    inreplace "setup.py", "DEBUG = False", "DEBUG = True"
+
     pythons.each do |python|
       system python, "setup.py", "build_ext", *pre_args, "install", *post_args
     end
