@@ -60,6 +60,8 @@ class Pillow < Formula
     ENV["MAX_CONCURRENCY"] = ENV.make_jobs.to_s
     ENV.prepend "CPPFLAGS", "-I#{Formula["tcl-tk"].opt_include}"
     ENV.prepend "LDFLAGS", "-L#{Formula["tcl-tk"].opt_lib}"
+    ENV.prepend "CPPFLAGS", "-I#{Formula["webp"].opt_include}"
+    ENV.prepend "LDFLAGS", "-L#{Formula["webp"].opt_lib}"
 
     pythons.each do |python|
       system python, "setup.py", "build_ext", *pre_args, "install", *post_args
