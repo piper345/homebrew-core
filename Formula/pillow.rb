@@ -23,6 +23,7 @@ class Pillow < Formula
   depends_on "libimagequant"
   depends_on "libraqm"
   depends_on "libtiff"
+  depends_on "libxcb"
   depends_on "little-cms2"
   depends_on "openjpeg"
   depends_on "tcl-tk"
