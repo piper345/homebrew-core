@@ -40,10 +40,11 @@ class Trafficserver < Formula
       --prefix=#{prefix}
       --mandir=#{man}
       --localstatedir=#{var}
-      --sysconfdir=#{etc}/trafficserver
+      --sysconfdir=#{pkgetc}
       --with-openssl=#{Formula["openssl@1.1"].opt_prefix}
       --with-yaml-cpp=#{Formula["yaml-cpp"].opt_prefix}
       --with-group=admin
+      --disable-tests
       --disable-silent-rules
       --enable-experimental-plugins
     ]
@@ -58,6 +59,7 @@ class Trafficserver < Formula
       "Makefile.PL INSTALLDIRS=$(INSTALLDIRS)",
       "Makefile.PL INSTALLDIRS=$(INSTALLDIRS) INSTALLSITEMAN3DIR=#{man3}"
 
+    ENV.append "LDFLAGS", "-Wl,-undefined,dynamic_lookup" if OS.mac?
     system "make" if build.head?
     system "make", "install"
   end
