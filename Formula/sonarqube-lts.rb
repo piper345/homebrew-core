@@ -1,8 +1,8 @@
 class SonarqubeLts < Formula
   desc "Manage code quality"
   homepage "https://www.sonarqube.org/"
-  url "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.3.0.51899.zip"
-  sha256 "74108676ed881e5a10ad53b42bc8b343e868be37b4d36705b447dc80ed9f2c1c"
+  url "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.6.50800.zip"
+  sha256 "b2911b7420e656fbb94880af76ff9cd26ec2f13d26923a6cb4174a2ea9457d3d"
   license "LGPL-3.0-or-later"
 
   # Upstream doesn't distinguish LTS releases in the URL or filename, so this
@@ -23,7 +23,6 @@ class SonarqubeLts < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "790c3b1664d331817bf85ae9b99de3b960689085b9f7707ac424d73de6cee5c2"
   end
 
-  depends_on arch: :x86_64
   depends_on "openjdk@11"
 
   conflicts_with "sonarqube", because: "both install the same binaries"
