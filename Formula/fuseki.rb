@@ -28,7 +28,6 @@ class Fuseki < Formula
 
     # Non-symlinked binaries and application files
     libexec.install "fuseki-server.jar",
-                    "fuseki.war",
                     "webapp"
   end
 
