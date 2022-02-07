@@ -17,7 +17,7 @@ class Onedrive < Formula
   depends_on "systemd"
 
   def install
-    system "./configure", *std_configure_args
+    system "./configure", *std_configure_args, "--with-systemdsystemunitdir=no"
     system "make", "install"
     bash_completion.install "contrib/completions/complete.bash" => "onedrive"
     zsh_completion.install "contrib/completions/complete.zsh" => "_onedrive"
