@@ -29,6 +29,8 @@ class Libgetdata < Formula
                           "--disable-python",
                           "--without-liblzma",
                           "--without-libzzip"
+
+    ENV.deparallelize # can't open file: .libs/libgetdatabzip2-0.11.0.so (No such file or directory)
     system "make"
     system "make", "install"
   end
