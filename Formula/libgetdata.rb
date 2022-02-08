@@ -32,6 +32,9 @@ class Libgetdata < Formula
 
     ENV.deparallelize # can't open file: .libs/libgetdatabzip2-0.11.0.so (No such file or directory)
     system "make"
+    # The Makefile seems to try to install things in the wrong order.
+    # https://github.com/ketiltrout/getdata/issues/5
+    system "make", "-C", "bindings/perl", "install-nodist_perlautogetdataSCRIPTS"
     system "make", "install"
   end
 
