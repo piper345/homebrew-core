@@ -1,6 +1,7 @@
 class Libgetdata < Formula
   desc "Reference implementation of the Dirfile Standards"
   homepage "https://getdata.sourceforge.io/"
+  # TODO: Check if extra `make` call can be removed at version bump.
   url "https://downloads.sourceforge.net/project/getdata/getdata/0.11.0/getdata-0.11.0.tar.xz"
   sha256 "d16feae0907090047f5cc60ae0fb3500490e4d1889ae586e76b2d3a2e1c1b273"
 
@@ -39,7 +40,8 @@ class Libgetdata < Formula
     ENV.deparallelize # can't open file: .libs/libgetdatabzip2-0.11.0.so (No such file or directory)
     system "make"
     # The Makefile seems to try to install things in the wrong order.
-    # https://github.com/ketiltrout/getdata/issues/5
+    # Remove this when the following PR is merged/resolved and lands in a release:
+    # https://github.com/ketiltrout/getdata/pull/6
     system "make", "-C", "bindings/perl", "install-nodist_perlautogetdataSCRIPTS"
     system "make", "install"
   end
