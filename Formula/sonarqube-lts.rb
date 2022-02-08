@@ -1,8 +1,8 @@
 class SonarqubeLts < Formula
   desc "Manage code quality"
   homepage "https://www.sonarqube.org/"
-  url "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.6.50800.zip"
-  sha256 "b2911b7420e656fbb94880af76ff9cd26ec2f13d26923a6cb4174a2ea9457d3d"
+  url "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.7.52159.zip"
+  sha256 "ce528344a384d0ee5b6ad44b242005a0053914683311ea967c43ff86c81fcc94"
   license "LGPL-3.0-or-later"
 
   # Upstream doesn't distinguish LTS releases in the URL or filename, so this
