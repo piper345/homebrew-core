@@ -25,8 +25,8 @@ class Openrtsp < Formula
   def install
     # Avoid linkage to system OpenSSL
     libs = [
-      Formula["openssl@1.1"].opt_lib/"libcrypto.dylib",
-      Formula["openssl@1.1"].opt_lib/"libssl.dylib",
+      Formula["openssl@1.1"].opt_lib/shared_library("libcrypto"),
+      Formula["openssl@1.1"].opt_lib/shared_library("libssl"),
     ]
 
     os_flag = OS.mac? ? "macosx-no-openssl" : "linux-no-openssl"
