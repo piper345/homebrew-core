@@ -45,8 +45,9 @@ class Teleport < Formula
   end
 
   test do
-    webassets = shell_output("curl \"https://api.github.com/repos/gravitational/teleport/contents/webassets?ref=v#{version}\"")
-    assert_match resource("webassets").version.to_s, webassets
+    curl_output = shell_output("curl \"https://api.github.com/repos/gravitational/teleport/contents/webassets?ref=v#{version}\"")
+    webassets_version = JSON.parse(curl_output)["sha"]
+    assert_match webassets_version, resource("webassets").url
     assert_match version.to_s, shell_output("#{bin}/teleport version")
     assert_match version.to_s, shell_output("#{bin}/tsh version")
     assert_match version.to_s, shell_output("#{bin}/tctl version")
