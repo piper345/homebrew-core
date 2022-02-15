@@ -1,4 +1,6 @@
 class Meson < Formula
+  include Language::Python::Virtualenv
+
   desc "Fast and user friendly build system"
   homepage "https://mesonbuild.com/"
   url "https://github.com/mesonbuild/meson/releases/download/0.61.2/meson-0.61.2.tar.gz"
@@ -14,8 +16,7 @@ class Meson < Formula
   depends_on "python@3.10"
 
   def install
-    python3 = Formula["python@3.10"].opt_bin/"python3"
-    system python3, *Language::Python.setup_install_args(prefix)
+    virtualenv_install_with_resources
   end
 
   test do
