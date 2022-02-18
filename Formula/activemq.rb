@@ -15,22 +15,24 @@ class Activemq < Formula
     sha256 cellar: :any_skip_relocation, mojave:         "e0feb1f5e6b47220ddfff5bcb293da5d44d096294c773b3a94cf89fcd9cecab6"
   end
 
+  depends_on "java-service-wrapper"
   depends_on "openjdk"
 
   def install
-    if OS.mac?
-      rm_rf Dir["bin/linux-x86-*"]
+    useless = OS.mac? ? "linux" : "{macosx,linux-x86-32}"
+    buildpath.glob("bin/#{useless}*").map(&:rmtree)
 
-      # Discard universal binaries without usable slices
-      rm_f "bin/macosx/libwrapper.jnilib"
-      rm_f "bin/macosx/wrapper" if Hardware::CPU.arm?
-    else
-      rm_rf "bin/macosx"
-    end
+    libexec.install buildpath.children
+    wrapper_dir = OS.mac? ? "macosx" : "#{OS.kernel_name.downcase}-#{Hardware::CPU.arch}".tr("_", "-")
+    libexec.glob("bin/#{wrapper_dir}/{wrapper,libwrapper.{so,jnilib}}").map(&:unlink)
+    (bin/"activemq").write_env_script libexec/"bin/activemq", Language::Java.overridable_java_home_env
 
-    libexec.install Dir["*"]
-    deuniversalize_machos
-    (bin/"activemq").write_env_script libexec/"bin/activemq", JAVA_HOME: Formula["openjdk"].opt_prefix
+    wrapper = Formula["java-service-wrapper"].opt_libexec
+    wrapper_dir = libexec/"bin"/wrapper_dir
+    ln_sf wrapper/"bin/wrapper", wrapper_dir/"wrapper"
+    libext = OS.mac? ? "jnilib" : "so"
+    ln_sf wrapper/"lib/libwrapper.#{libext}", wrapper_dir/"libwrapper.#{libext}"
+    ln_sf wrapper/"lib/wrapper.jar", wrapper_dir/"wrapper.jar"
   end
 
   service do
