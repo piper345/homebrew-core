@@ -18,7 +18,7 @@ class Svgbob < Formula
   depends_on "rust" => :build
 
   def install
-    system "cargo", "install", *std_cargo_args(path: "packages/cli")
+    system "cargo", "install", *std_cargo_args(path: "packages/svgbob_cli")
     # The cli tool was renamed (0.6.2 -> 0.6.3)
     # Create a symlink to not break compatibility
     bin.install_symlink bin/"svgbob_cli" => "svgbob"
