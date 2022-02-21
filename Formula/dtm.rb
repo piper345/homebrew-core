@@ -23,12 +23,25 @@ class Dtm < Formula
 
   test do
     assert_match "dtm version: v#{version}", shell_output("#{bin}/dtm -v")
+
+    http_port = free_port
+    grpc_port = free_port
+
     dtm_pid = fork do
+      ENV["HTTP_PORT"] = http_port.to_s
+      ENV["GRPC_PORT"] = grpc_port.to_s
       exec bin/"dtm"
     end
     # sleep to let dtm get its wits about it
     sleep 5
-    assert_match "succeed", shell_output("#{bin}/dtm-qs 2>&1")
+    metrics_output = shell_output("curl -s localhost:#{http_port}/api/metrics")
+    assert_match "# HELP dtm_server_info The information of this dtm server.", metrics_output
+
+    all_json = JSON.parse(shell_output("curl -s localhost:#{http_port}/api/dtmsvr/all"))
+    assert_equal 0, all_json["next_position"].length
+    assert all_json["next_position"].instance_of? String
+    assert_equal 0, all_json["transactions"].length
+    assert all_json["transactions"].instance_of? Array
   ensure
     # clean up the dtm process before we leave
     Process.kill("HUP", dtm_pid)
