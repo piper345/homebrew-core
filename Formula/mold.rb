@@ -54,7 +54,7 @@ class Mold < Formula
     system "make", *args, "install"
 
     inreplace buildpath.glob("test/*/*.sh") do |s|
-      s.gsub!('mold="$(pwd)', "mold=\"#{bin}")
+      s.gsub!(/^mold=.*((?:ld64\.)?mold)/, "mold=\"#{bin}/\\1\"")
       s.gsub!(/"?\$mold"?-wrapper/, lib/"mold/mold-wrapper", false)
     end
     pkgshare.install "test"
