@@ -37,7 +37,7 @@ class Gromacs < Formula
     gcc = Formula["gcc"]
     cc = gcc.opt_bin/"gcc-#{gcc.any_installed_version.major}"
     cxx = gcc.opt_bin/"g++-#{gcc.any_installed_version.major}"
-    inreplace "src/gromacs/gromacs-toolchain.cmake.cmakein" do |s|
+    inreplace "src/gromacs/gromacs-hints.in.cmake" do |s|
       s.gsub! "@CMAKE_LINKER@", "/usr/bin/ld"
       s.gsub! "@CMAKE_C_COMPILER@", cc
       s.gsub! "@CMAKE_CXX_COMPILER@", cxx
