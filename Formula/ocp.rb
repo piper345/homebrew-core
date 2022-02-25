@@ -1,10 +1,20 @@
 class Ocp < Formula
   desc "UNIX port of the Open Cubic Player"
   homepage "https://stian.cubic.org/project-ocp.php"
-  url "https://stian.cubic.org/ocp/ocp-0.2.94.tar.xz"
-  sha256 "807ab7ddc0ffe1800da85ac0f0e9b8bfcf3091e693d0db100a9e736958ec2948"
   license "GPL-2.0-or-later"
   head "https://github.com/mywave82/opencubicplayer.git", branch: "master"
+
+  stable do
+    url "https://stian.cubic.org/ocp/ocp-0.2.94.tar.xz"
+    sha256 "807ab7ddc0ffe1800da85ac0f0e9b8bfcf3091e693d0db100a9e736958ec2948"
+
+    # Upstreamed patch to remove `-flat_namespace` usage and fix build.
+    # Remove in next release.
+    patch do
+      url "https://github.com/mywave82/opencubicplayer/compare/f942f3f...82097f1.patch?full_index=1"
+      sha256 "69f29be01d0259f20db3f4db87d75112dd89771917752981738191f1ba5440ec"
+    end
+  end
 
   livecheck do
     url :homepage
