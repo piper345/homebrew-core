@@ -18,13 +18,11 @@ class Brook < Formula
   depends_on "go" => :build
 
   def install
-    cd "cli/brook" do
-      system "go", "build", *std_go_args(ldflags: "-s -w")
-    end
+    system "go", "build", *std_go_args(ldflags: "-s -w"), "./cli/brook"
   end
 
   test do
-    output = shell_output "#{bin}/brook link -s 1.2.3.4:56789"
-    assert_match "brook://1.2.3.4%3A56789", output
+    output = shell_output "#{bin}/brook link --server 1.2.3.4:56789 --password hello"
+    assert_match "brook://server?address=&insecure=&name=&password=hello&server=1.2.3.4%3A56789&username=", output
   end
 end
