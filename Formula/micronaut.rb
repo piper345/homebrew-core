@@ -18,7 +18,7 @@ class Micronaut < Formula
   end
 
   # Uses a hardcoded list of supported JDKs. Try switching to `openjdk` on update.
-  depends_on "openjdk@11"
+  depends_on "openjdk"
 
   def install
     system "./gradlew", "micronaut-cli:assemble", "-x", "test"
@@ -28,7 +28,7 @@ class Micronaut < Formula
     mv "starter-cli/build/exploded/lib", libexec/"lib"
 
     bash_completion.install "starter-cli/build/exploded/bin/mn_completion"
-    (bin/"mn").write_env_script libexec/"bin/mn", Language::Java.overridable_java_home_env("11")
+    (bin/"mn").write_env_script libexec/"bin/mn", Language::Java.overridable_java_home_env
   end
 
   test do
