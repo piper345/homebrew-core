@@ -1,8 +1,8 @@
 class Solana < Formula
   desc "Web-Scale Blockchain for decentralized apps and marketplaces"
   homepage "https://solana.com"
-  url "https://github.com/solana-labs/solana/archive/v1.9.9.tar.gz"
-  sha256 "6ff27089c9c10c66857d15bcfca4abd700d871f400d89c75204da9941c327505"
+  url "https://github.com/solana-labs/solana/archive/v1.10.0.tar.gz"
+  sha256 "af371b6ad5dc30ce9b19602054fcd88c8e55520f05ed1eda29ee8c6d34acf465"
   license "Apache-2.0"
 
   livecheck do
