@@ -4,8 +4,8 @@ class Podman < Formula
   license "Apache-2.0"
 
   stable do
-    url "https://github.com/containers/podman/archive/v3.4.4.tar.gz"
-    sha256 "718c9e1e734c2d374fcf3c59e4cc7c1755acb954fc7565093e1d636c04b72e3a"
+    url "https://github.com/containers/podman/archive/v4.0.2.tar.gz"
+    sha256 "cac4328b0a5e618f4f6567944e255d15fad3e1f7901df55603f1efdd7aaeda95"
 
     resource "gvproxy" do
       url "https://github.com/containers/gvisor-tap-vsock/archive/v0.3.0.tar.gz"
