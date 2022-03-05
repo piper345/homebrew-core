@@ -15,6 +15,7 @@ class Sniffglue < Formula
   end
 
   depends_on "rust" => :build
+  depends_on "scdoc" => :build
 
   uses_from_macos "libpcap"
 
@@ -22,20 +23,21 @@ class Sniffglue < Formula
     depends_on "libseccomp"
   end
 
-  resource "testdata" do
+  resource "homebrew-testdata" do
     url "https://github.com/kpcyrd/sniffglue/raw/163ca299bab711fb0082de216d07d7089c176de6/pcaps/SkypeIRC.pcap"
     sha256 "bac79a9c3413637f871193589d848697af895b7f2700d949022224d59aa6830f"
   end
 
   def install
     system "cargo", "install", *std_cargo_args
+    system "make", "docs"
 
     etc.install "sniffglue.conf"
     man1.install "docs/sniffglue.1"
   end
 
   test do
-    testpath.install resource("testdata")
+    testpath.install resource("homebrew-testdata")
     system bin/"sniffglue", "-r", "SkypeIRC.pcap"
   end
 end
