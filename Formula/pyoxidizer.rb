@@ -1,8 +1,8 @@
 class Pyoxidizer < Formula
   desc "Modern Python application packaging and distribution tool"
   homepage "https://github.com/indygreg/PyOxidizer"
-  url "https://github.com/indygreg/PyOxidizer/archive/pyoxidizer/0.19.0.tar.gz"
-  sha256 "ca0ef41c359ad8ad4217b4c99f3cba4179278308d846f404175183f8ec71067b"
+  url "https://github.com/indygreg/PyOxidizer/archive/pyoxidizer/0.20.0.tar.gz"
+  sha256 "11baf7bac8f869d6458b5aee2cb8ecd7f2d7f170211ee97f979abb62eea22bc4"
   license "MPL-2.0"
   head "https://github.com/indygreg/PyOxidizer.git", branch: "main"
 
