@@ -18,8 +18,8 @@ class AliyunCli < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/aliyun/aliyun-cli/cli.Version=#{version}"),
-                          "-o", bin/"aliyun", "main/main.go"
+    ldflags = "-s -w -X github.com/aliyun/aliyun-cli/cli.Version=#{version}"
+    system "go", "build", *std_go_args(output: bin/"aliyun", ldflags: ldflags), "main/main.go"
   end
 
   test do
