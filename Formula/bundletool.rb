@@ -11,7 +11,7 @@ class Bundletool < Formula
 
   depends_on "openjdk"
 
-  resource "bundle" do
+  resource "homebrew-test-bundle" do
     url "https://gist.githubusercontent.com/raw/ca85ede7ac072a44f48c658be55ff0d3/sample.aab"
     sha256 "aac71ad62e1f20dd19b80eba5da5cb5e589df40922f288fb6a4b37a62eba27ef"
   end
@@ -25,7 +25,7 @@ class Bundletool < Formula
   end
 
   test do
-    resource("bundle").stage do
+    resource("homebrew-test-bundle").stage do
       expected = <<~EOS
         App Bundle information
         ------------
