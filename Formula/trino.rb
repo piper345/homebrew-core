@@ -20,18 +20,17 @@ class Trino < Formula
   end
 
   depends_on "gnu-tar" => :build
-  depends_on arch: :x86_64
   depends_on "openjdk"
   depends_on "python@3.10"
 
   resource "trino-src" do
-    url "https://github.com/trinodb/trino/archive/372.tar.gz", using: :nounzip
-    sha256 "d81b88f823e22b0a09ee749adfc15a9c589cf3fbf0c68219297d84ef59ed08e5"
+    url "https://github.com/trinodb/trino/archive/373.tar.gz", using: :nounzip
+    sha256 "bb31510a9a69a1adcf612c007b4f8b6055eaa75494bdb29fa81d805a5a42045c"
   end
 
   resource "trino-cli" do
-    url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/372/trino-cli-372-executable.jar"
-    sha256 "61121f9dda87586ddaddc1d969102a2587f6408b7285e6a2a8218be9ecc4c9b9"
+    url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/373/trino-cli-373-executable.jar"
+    sha256 "4a2ec84185253b7238bb92515aba28869fe0a71190168734f41bb5e5b0c4c6ee"
   end
 
   def install
