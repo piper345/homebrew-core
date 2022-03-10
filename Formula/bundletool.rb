@@ -18,10 +18,7 @@ class Bundletool < Formula
 
   def install
     libexec.install "bundletool-all-#{version}.jar" => "bundletool-all.jar"
-    (bin/"bundletool").write <<~EOS
-      #!/bin/bash
-      exec "#{Formula["openjdk"].opt_bin}/java" -jar "#{libexec}/bundletool-all.jar" "$@"
-    EOS
+    bin.write_jar_script libexec/"bundletool-all.jar", "bundletool"
   end
 
   test do
