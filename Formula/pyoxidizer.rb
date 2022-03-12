@@ -31,8 +31,12 @@ class Pyoxidizer < Formula
 
   test do
     system bin/"pyoxidizer", "init-rust-project", "hello_world"
+    assert_predicate testpath/"hello_world/Cargo.toml", :exist?
+
     cd "hello_world" do
       system bin/"pyoxidizer", "build", "--verbose"
     end
+
+    assert_match version.to_s, shell_output("#{bin}/pyoxidizer --version")
   end
 end
