@@ -28,8 +28,8 @@ class Xray < Formula
   end
 
   resource "geosite" do
-    url "https://github.com/v2fly/domain-list-community/releases/download/20220313173740/dlc.dat"
-    sha256 "85ae4443a4192c0ff4c759e8a959dac02fac3628be62531939cc9059c3285ad0"
+    url "https://github.com/v2fly/domain-list-community/releases/download/20220320055819/dlc.dat"
+    sha256 "644c20f0df438b618c4200370b21c27885699d73af9cd781dfb21a922317cef8"
   end
 
   resource "example_config" do
