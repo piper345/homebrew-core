@@ -5,7 +5,7 @@ class AnsibleLint < Formula
   homepage "https://github.com/ansible/ansible-lint/"
   url "https://files.pythonhosted.org/packages/1b/f5/d99686df5aa3fd9cb1f17b2b39eced4c08769c92ae2429a845cc1243f9e6/ansible-lint-6.0.2.tar.gz"
   sha256 "b539bc22d13e6de0cc2e25758e1d28b2bc01561a414ae37ceda3708b5a2a79ed"
-  license "MIT"
+  license all_of: ["MIT", "GPL-3.0-or-later"]
 
   bottle do
     sha256 cellar: :any,                 arm64_monterey: "00ec5132f0f1de9d7e78be2902602eed0ad038ad926827488a282f4db643a56e"
@@ -17,6 +17,7 @@ class AnsibleLint < Formula
   end
 
   depends_on "pkg-config" => :build
+  depends_on "rust" => :build # for cryptography
   depends_on "ansible"
   depends_on "libyaml"
   depends_on "python@3.10"
