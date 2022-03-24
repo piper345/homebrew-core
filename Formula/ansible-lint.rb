@@ -145,10 +145,10 @@ class AnsibleLint < Formula
     (testpath/"playbook.yml").write <<~EOS
       ---
       - hosts: all
-        gather_facts: False
+        gather_facts: false
         tasks:
         - name: ping
-          ping:
+          ansible.builtin.ping:
     EOS
     system bin/"ansible-lint", testpath/"playbook.yml"
   end
