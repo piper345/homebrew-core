@@ -46,11 +46,11 @@ class Ocp < Formula
     ENV.deparallelize
 
     # Required for SDL2
-    resource("unifont").stage do
+    resource("unifont").stage do |r|
       cd "font/precompiled" do
-        share.install "unifont-13.0.06.ttf" => "unifont.ttf"
-        share.install "unifont_csur-13.0.06.ttf" => "unifont_csur.ttf"
-        share.install "unifont_upper-13.0.06.ttf" => "unifont_upper.ttf"
+        share.install "unifont-#{r.version}.ttf" => "unifont.ttf"
+        share.install "unifont_csur-#{r.version}.ttf" => "unifont_csur.ttf"
+        share.install "unifont_upper-#{r.version}.ttf" => "unifont_upper.ttf"
       end
     end
 
