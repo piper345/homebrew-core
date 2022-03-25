@@ -23,6 +23,7 @@ class Ocp < Formula
   depends_on "flac"
   depends_on "freetype"
   depends_on "jpeg-turbo"
+  depends_on "libdiscid"
   depends_on "libpng"
   depends_on "libvorbis"
   depends_on "mad"
@@ -37,8 +38,8 @@ class Ocp < Formula
   uses_from_macos "zlib"
 
   resource "unifont" do
-    url "https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.tar.gz"
-    sha256 "68def7a46df44241c7bf62de7ce0444e8ee9782f159c4b7553da9cfdc00be925"
+    url "https://ftp.gnu.org/gnu/unifont/unifont-14.0.02/unifont-14.0.02.tar.gz"
+    sha256 "401bb9c3741372c1316fec87c392887037e9e828fae64fd7bee2775bbe4545f7"
   end
 
   def install
