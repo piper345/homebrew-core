@@ -38,6 +38,10 @@ class Ocp < Formula
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
+  on_linux do
+    depends_on "util-linux" => :build # for `hexdump`
+  end
+
   resource "unifont" do
     url "https://ftp.gnu.org/gnu/unifont/unifont-14.0.02/unifont-14.0.02.tar.gz"
     sha256 "401bb9c3741372c1316fec87c392887037e9e828fae64fd7bee2775bbe4545f7"
