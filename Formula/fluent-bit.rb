@@ -29,13 +29,19 @@ class FluentBit < Formula
   end
 
   def install
+    # Prevent fluent-bit to install files into global init system
+    #
+    # For more information see https://github.com/fluent/fluent-bit/issues/3393
+    inreplace "src/CMakeLists.txt", "if(IS_DIRECTORY /lib/systemd/system)", "if(False)"
+    inreplace "src/CMakeLists.txt", "elseif(IS_DIRECTORY /usr/share/upstart)", "elif(False)"
+
     chdir "build" do
       # Per https://luajit.org/install.html: If MACOSX_DEPLOYMENT_TARGET
       # is not set then it's forced to 10.4, which breaks compile on Mojave.
       # fluent-bit builds against a vendored Luajit.
       ENV["MACOSX_DEPLOYMENT_TARGET"] = MacOS.version
 
-      system "cmake", "..", "-DWITH_IN_MEM=OFF", *std_cmake_args
+      system "cmake", "..", *std_cmake_args
       system "make", "install"
     end
   end
