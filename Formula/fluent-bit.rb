@@ -42,6 +42,6 @@ class FluentBit < Formula
 
   test do
     output = shell_output("#{bin}/fluent-bit -V").chomp
-    assert_equal "Fluent Bit v#{version}", output
+    assert_match "Fluent Bit v#{version}", output
   end
 end
