@@ -18,12 +18,9 @@ class StructurizrCli < Formula
   end
 
   test do
-    expected_output = <<~EOS.strip
-      Structurizr CLI v#{version}
-      Structurizr DSL v#{version}
-      Usage: structurizr push|pull|lock|unlock|export|validate|list [options]
-    EOS
     result = pipe_output("#{bin}/structurizr-cli").strip
-    assert_equal result, expected_output
+    # not checking `Structurizr DSL` version as it is different binary
+    assert_match "Structurizr CLI v#{version}", result
+    assert_match "Usage: structurizr push|pull|lock|unlock|export|validate|list [options]", result
   end
 end
