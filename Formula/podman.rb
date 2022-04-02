@@ -4,8 +4,8 @@ class Podman < Formula
   license "Apache-2.0"
 
   stable do
-    url "https://github.com/containers/podman/archive/v4.0.2.tar.gz"
-    sha256 "cac4328b0a5e618f4f6567944e255d15fad3e1f7901df55603f1efdd7aaeda95"
+    url "https://github.com/containers/podman/archive/v4.0.3.tar.gz"
+    sha256 "e3b53fc9142d4f2dc085f17a377d92ffb8bfe7756c4f47b8128b38bcc3540cbc"
     # This patch is needed to allow proper booting of the machine as well
     # as volume mounting with 9p on darwin. It is already merged upstream
     # and can be removed at Podman 4.1.
