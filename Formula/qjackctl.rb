@@ -39,6 +39,6 @@ class Qjackctl < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/qjackctl --version 2>&1", 1)
+    assert_match version.to_s, shell_output("#{bin}/qjackctl --version 2>&1")
   end
 end
