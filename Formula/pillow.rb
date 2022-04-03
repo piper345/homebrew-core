@@ -51,13 +51,6 @@ class Pillow < Formula
       --enable-xcb
     ]
 
-    post_args = %W[
-      --prefix=#{prefix}
-      --install-scripts=#{bin}
-      --single-version-externally-managed
-      --record=installed.txt
-    ]
-
     ENV["MAX_CONCURRENCY"] = ENV.make_jobs.to_s
     deps.each do |dep|
       next if dep.build? || dep.test?
@@ -70,6 +63,14 @@ class Pillow < Formula
     inreplace "setup.py", "DEBUG = False", "DEBUG = True"
 
     pythons.each do |python|
+      post_args = %W[
+        --prefix=#{prefix}
+        --install-scripts=#{bin}
+        --install-lib=#{prefix/Language::Python.site_packages(python)}
+        --single-version-externally-managed
+        --record=installed.txt
+      ]
+
       system python, "setup.py", "build_ext", *pre_args, "install", *post_args
     end
   end
