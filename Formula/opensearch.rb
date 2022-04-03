@@ -16,7 +16,7 @@ class Opensearch < Formula
   depends_on "openjdk"
 
   def install
-    system "gradle", ":distribution:archives:no-jdk-darwin-tar:assemble"
+    system "gradle", "-Dbuild.snapshot=false", ":distribution:archives:no-jdk-darwin-tar:assemble"
 
     mkdir "tar" do
       # Extract the package to the tar directory
@@ -93,7 +93,7 @@ class Opensearch < Formula
                                 "-Epath.data=#{testpath}/data",
                                 "-Epath.logs=#{testpath}/logs"
     end
-    sleep 20
+    sleep 60
     output = shell_output("curl -s -XGET localhost:#{port}/")
     assert_equal "opensearch", JSON.parse(output)["version"]["distribution"]
 
