@@ -43,12 +43,17 @@ class Pillow < Formula
   end
 
   def install
-    pre_args = %w[
+    build_ext_args = %w[
       --enable-tiff
       --enable-freetype
       --enable-lcms
       --enable-webp
       --enable-xcb
+    ]
+
+    install_args = %w[
+      --single-version-externally-managed
+      --record=installed.txt
     ]
 
     ENV["MAX_CONCURRENCY"] = ENV.make_jobs.to_s
@@ -63,15 +68,9 @@ class Pillow < Formula
     inreplace "setup.py", "DEBUG = False", "DEBUG = True"
 
     pythons.each do |python|
-      post_args = %W[
-        --prefix=#{prefix}
-        --install-scripts=#{bin}
-        --install-lib=#{prefix/Language::Python.site_packages(python)}
-        --single-version-externally-managed
-        --record=installed.txt
-      ]
-
-      system python, "setup.py", "build_ext", *pre_args, "install", *post_args
+      system python, "setup.py",
+                     "build_ext", *build_ext_args,
+                     "install", *install_args, "--install-lib=#{prefix/Language::Python.site_packages(python)}"
     end
   end
 
