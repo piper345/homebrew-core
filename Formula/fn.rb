@@ -1,8 +1,8 @@
 class Fn < Formula
   desc "Command-line tool for the fn project"
   homepage "https://fnproject.io"
-  url "https://github.com/fnproject/cli/archive/0.6.17.tar.gz"
-  sha256 "7fbad5f089aa083aa3d2ab891cc1754457d3a0ccad2ed1e91af40f1ac5d6a110"
+  url "https://github.com/fnproject/cli/archive/0.6.18.tar.gz"
+  sha256 "412c7fb2cca090a45caa9f5b390e551aac8ab5d68188fedd7049e65f22232083"
   license "Apache-2.0"
   head "https://github.com/fnproject/cli.git", branch: "master"
 
