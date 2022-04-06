@@ -3,7 +3,7 @@ class ConsulTemplate < Formula
   homepage "https://github.com/hashicorp/consul-template"
   url "https://github.com/hashicorp/consul-template.git",
       tag:      "v0.28.1",
-      revision: "c958f1d6ade9e138e0fde0af9664951bc21af2ff"
+      revision: "d8d30a97a27a3fbb182b4a7165038f2bc739d6f7"
   license "MPL-2.0"
   head "https://github.com/hashicorp/consul-template.git", branch: "master"
 
