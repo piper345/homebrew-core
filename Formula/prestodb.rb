@@ -23,8 +23,8 @@ class Prestodb < Formula
   depends_on "python@3.10"
 
   resource "presto-cli" do
-    url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-cli/0.271/presto-cli-0.271-executable.jar"
-    sha256 "0e635e6228bb18de33c6762bbcf589d7300299108b3e7c6d367171ef543579e1"
+    url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-cli/0.272/presto-cli-0.272-executable.jar"
+    sha256 "bdc7bfe2ad84f8ad217a3fc5744b7552cea00df059763d7155ce14cf159b95cf"
   end
 
   def install
