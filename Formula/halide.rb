@@ -29,7 +29,7 @@ class Halide < Formula
 
   def install
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args, "-DHalide_SHARED_LLVM=ON"
+      system "cmake", "..", *std_cmake_args, "-DCMAKE_INSTALL_RPATH=#{rpath}", "-DHalide_SHARED_LLVM=ON"
       system "make"
       system "make", "install"
     end
