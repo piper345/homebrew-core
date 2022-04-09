@@ -26,13 +26,13 @@ class Trino < Formula
   depends_on "python@3.10"
 
   resource "trino-src" do
-    url "https://github.com/trinodb/trino/archive/375.tar.gz", using: :nounzip
-    sha256 "bab8287f387931faa228b698a30886c084f2981c4313b8ebef4340c685c490c8"
+    url "https://github.com/trinodb/trino/archive/376.tar.gz", using: :nounzip
+    sha256 "1bb3b3faee5f5b385af229c72f5b8c57cae91cc2f0f56a51bcc43959e394dfdb"
   end
 
   resource "trino-cli" do
-    url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/375/trino-cli-375-executable.jar"
-    sha256 "0b96af66dca43353389be3c348f0472a9e709ace22c9a2a9689acb64b70beac1"
+    url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/376/trino-cli-376-executable.jar"
+    sha256 "b54cf259354ba9fad2def1d4b1be7da0c0eabd8e9eb33e1e0adbdd9d32721a47"
   end
 
   def install
