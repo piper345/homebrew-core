@@ -15,10 +15,13 @@ class SqlxCli < Formula
 
   depends_on "rust" => :build
 
+  on_linux do
+    depends_on "pkg-config" => :build
+    depends_on "openssl@1.1"
+  end
+
   def install
-    cd "sqlx-cli" do
-      system "cargo", "install", *std_cargo_args
-    end
+    system "cargo", "install", *std_cargo_args(path: "sqlx-cli")
   end
 
   test do
