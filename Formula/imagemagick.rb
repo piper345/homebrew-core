@@ -98,7 +98,7 @@ class Imagemagick < Formula
 
     # Check support for a few specific image formats, mostly to ensure LibRaw linked correctly.
     formats = shell_output("#{bin}/magick -list format")
-    ["AVIF* HEIC      rw+", "ARW  DNG       r--", "DNG  DNG       r--"].each do |format|
+    ["AVIF  HEIC      rw+", "ARW  DNG       r--", "DNG  DNG       r--"].each do |format|
       assert_match format, formats
     end
     assert_match "Helvetica", shell_output("#{bin}/magick -list font")
