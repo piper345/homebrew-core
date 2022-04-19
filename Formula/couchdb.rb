@@ -23,7 +23,7 @@ class Couchdb < Formula
   depends_on "autoconf" => :build
   depends_on "autoconf-archive" => :build
   depends_on "automake" => :build
-  depends_on "erlang@22" => :build
+  depends_on "erlang" => :build
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
   depends_on "icu4c"
@@ -41,13 +41,6 @@ class Couchdb < Formula
   fails_with :gcc do
     version "5"
     cause "mfbt (and Gecko) require at least gcc 6.1 to build."
-  end
-
-  # Add support for SpiderMonkey 91esr. Remove in the next release.
-  # PR ref: https://github.com/apache/couchdb/pull/3842
-  patch do
-    url "https://github.com/apache/couchdb/commit/cb6aff46b65b68fd48293971a11c29633a0e21ff.patch?full_index=1"
-    sha256 "c32bc73937dd598cfc433a44098823e069665e6c85e8ec24f6da2ba56b42b02a"
   end
 
   def install
