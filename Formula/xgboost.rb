@@ -16,12 +16,16 @@ class Xgboost < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "libomp"
   depends_on "numpy"
   depends_on "scipy"
 
   on_macos do
+    depends_on "libomp"
     depends_on "llvm" => :build if DevelopmentTools.clang_build_version <= 1100
+  end
+
+  on_linux do
+    depends_on "gcc"
   end
 
   fails_with :clang do
@@ -32,6 +36,12 @@ class Xgboost < Formula
       make[2]: *** [src/CMakeFiles/objxgboost.dir/tree/updater_quantile_hist.cc.o] Error 254
     EOS
   end
+
+  # Starting in XGBoost 1.6.0, compiling with GCC 5.4.0 results in:
+  # src/linear/coordinate_common.h:414:35: internal compiler error: in tsubst_copy, at cp/pt.c:13039
+  # This compiler bug is fixed in more recent versions of GCC: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=80543
+  # Upstream issue filed at https://github.com/dmlc/xgboost/issues/7820
+  fails_with gcc: "5"
 
   def install
     ENV.remove "HOMEBREW_LIBRARY_PATHS", Formula["llvm"].opt_lib
