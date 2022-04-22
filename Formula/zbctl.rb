@@ -21,7 +21,7 @@ class Zbctl < Formula
   def install
     commit = Utils.git_short_head
     chdir "clients/go/cmd/zbctl" do
-      project = "github.com/camunda/zeebe/clients/go/cmd/zbctl/internal/commands"
+      project = "github.com/camunda/zeebe/clients/go/v8/cmd/zbctl/internal/commands"
       ldflags = %W[
         -w
         -X #{project}.Version=#{version}
