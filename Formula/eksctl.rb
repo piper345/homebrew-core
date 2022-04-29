@@ -19,11 +19,25 @@ class Eksctl < Formula
   depends_on "counterfeiter" => :build
   depends_on "go" => :build
   depends_on "go-bindata" => :build
-  depends_on "ifacemaker" => :build
   depends_on "mockery" => :build
   depends_on "aws-iam-authenticator"
 
+  # Eksctl requires newer version of ifacemaker
+  #
+  # Replace with `depends_on "ifacemaker" => :build` when ifacemaker > 1.2.0
+  # Until then get the resource version from go.mod
+  resource "ifacemaker" do
+    url "https://github.com/vburenin/ifacemaker/archive/b2018d8549dc4d51ce7e2254d6b0a743643613be.tar.gz"
+    sha256 "41888bf97133b4e7e190f2040378661b5bcab290d009e1098efbcb9db0f1d82f"
+  end
+
   def install
+    resource("ifacemaker").stage do
+      system "go", "build", *std_go_args(ldflags: "-s -w", output: buildpath/"ifacemaker")
+    end
+    inreplace "build/scripts/generate-aws-interfaces.sh", "${GOBIN}/ifacemaker",
+                                                          buildpath/"ifacemaker"
+
     ENV["GOBIN"] = HOMEBREW_PREFIX/"bin"
     system "make", "build"
     bin.install "eksctl"
