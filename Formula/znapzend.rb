@@ -24,7 +24,7 @@ class Znapzend < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d434f71ee8faa538bbf39b2cc6c328274d9f45873098f03bd7f4b2b33b05da40"
   end
 
-  uses_from_macos "perl"
+  uses_from_macos "perl", since :big_sur
 
   def install
     system "./configure", "--disable-silent-rules",
