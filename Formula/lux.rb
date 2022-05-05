@@ -22,6 +22,6 @@ class Lux < Formula
   end
 
   test do
-    system bin/"lux", "-i", "https://www.bilibili.com/video/av20203945"
+    system bin/"lux", "-i", "https://github.githubassets.com/images/modules/site/icons/footer/github-logo.svg"
   end
 end
