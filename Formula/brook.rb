@@ -22,6 +22,6 @@ class Brook < Formula
 
   test do
     output = shell_output "#{bin}/brook link --server 1.2.3.4:56789 --password hello"
-    assert_match "brook://server?address=&insecure=&name=&password=hello", output
+    assert_match "brook://server?***", output
   end
 end
