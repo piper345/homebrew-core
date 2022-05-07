@@ -38,6 +38,7 @@ class Sysdig < Formula
   end
 
   depends_on "cmake" => :build
+  depends_on "nlohmann-json" => :build
   depends_on "c-ares"
   depends_on "jsoncpp"
   depends_on "luajit-openresty"
