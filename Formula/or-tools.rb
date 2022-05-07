@@ -31,7 +31,6 @@ class OrTools < Formula
   depends_on "openblas"
   depends_on "osi"
   depends_on "protobuf"
-  depends_on "re2"
 
   uses_from_macos "zlib"
 
@@ -42,8 +41,11 @@ class OrTools < Formula
   fails_with gcc: "5"
 
   def install
-    system "cmake", "-S.", "-Bbuild", *std_cmake_args,
-           "-DUSE_SCIP=OFF", "-DBUILD_SAMPLES=OFF", "-DBUILD_EXAMPLES=OFF"
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args,
+                    "-DUSE_SCIP=OFF",
+                    "-DBUILD_SAMPLES=OFF",
+                    "-DBUILD_EXAMPLES=OFF",
+                    "-DBUILD_re2=ON" # build bundled re2 due to re2-2021-11-01.patch
     system "cmake", "--build", "build", "-v"
     system "cmake", "--build", "build", "--target", "install"
     pkgshare.install "ortools/linear_solver/samples/simple_lp_program.cc"
