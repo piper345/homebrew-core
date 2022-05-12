@@ -25,7 +25,7 @@ class Doxygen < Formula
   depends_on "bison" => :build
   depends_on "cmake" => :build
 
-  uses_from_macos "flex", since: :big_sur => :build
+  uses_from_macos "flex" => :build, since: :big_sur
   uses_from_macos "python" => :build
 
   on_linux do
