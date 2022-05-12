@@ -26,6 +26,7 @@ class Doxygen < Formula
   depends_on "cmake" => :build
 
   uses_from_macos "flex" => :build
+  uses_from_macos "python" => :build
 
   on_linux do
     depends_on "gcc"
