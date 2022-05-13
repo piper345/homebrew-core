@@ -15,6 +15,9 @@ class Needle < Formula
   depends_on xcode: ["12.2", :build]
 
   def install
+    inreplace "Makefile", "SWIFT_BUILD_FLAGS=--disable-sandbox -c release --arch arm64 --arch x86_64",
+                          "SWIFT_BUILD_FLAGS=--disable-sandbox -c release --arch #{Hardware::CPU.arch}"
+
     system "make", "install", "BINARY_FOLDER_PREFIX=#{prefix}"
     bin.install "./Generator/bin/needle"
     libexec.install "./Generator/bin/lib_InternalSwiftSyntaxParser.dylib"
