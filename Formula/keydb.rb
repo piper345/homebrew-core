@@ -14,6 +14,7 @@ class Keydb < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "535b7f2c5d08ca981e8a20fdf264c0fa47c9a1410c1811b36d62dac43e29d852"
   end
 
+  depends_on "openssl@3"
   uses_from_macos "curl"
 
   on_linux do
