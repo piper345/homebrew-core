@@ -26,7 +26,7 @@ class Vault < Formula
 
   depends_on "go" => :build
   depends_on "gox" => :build
-  depends_on "node@16" => :build
+  depends_on "node@14" => :build
   depends_on "yarn" => :build
 
   def install
