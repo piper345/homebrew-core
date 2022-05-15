@@ -22,8 +22,8 @@ class Kubevela < Formula
     ENV["CGO_ENABLED"] = "0"
     ldflags = %W[
       -s -w
-      -X github.com/kubevela/kubevela/version.VelaVersion=#{version}
-      -X github.com/kubevela/kubevela/version.GitRevision=#{Utils.git_head}
+      -X github.com/oam-dev/kubevela/version.VelaVersion=#{version}
+      -X github.com/oam-dev/kubevela/version.GitRevision=#{Utils.git_head}
     ]
 
     system "go", "build", *std_go_args(output: bin/"vela", ldflags: ldflags), "./references/cmd/cli"
