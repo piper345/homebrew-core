@@ -3,8 +3,8 @@ class Ocrmypdf < Formula
 
   desc "Adds an OCR text layer to scanned PDF files"
   homepage "https://ocrmypdf.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/24/09/7b6dc26872916431f5689102d4c415308bc118a1a6ada61420396519f74c/ocrmypdf-13.4.2.tar.gz"
-  sha256 "d52410bc38cf5b66da27668e38c66ac41fd3136457c1ec388b311f0a78ee213c"
+  url "https://files.pythonhosted.org/packages/fd/88/61f45af40217bb647ccc7d7cd6bd1ac42344820d8bb890f12f311474acc4/ocrmypdf-13.4.4.tar.gz"
+  sha256 "d132a9e5dcd73a477f8bd89f15de2c4ae64b394ca296644971fcd004168ace9d"
   license "MPL-2.0"
 
   bottle do
@@ -44,9 +44,9 @@ class Ocrmypdf < Formula
     sha256 "920f0d66a896c2d99f0adbb391f990a84091179542c205fa53ce5787aff87954"
   end
 
-  resource "chardet" do
-    url "https://files.pythonhosted.org/packages/ee/2d/9cdc2b527e127b4c9db64b86647d567985940ac3698eeabc7ffaccb4ea61/chardet-4.0.0.tar.gz"
-    sha256 "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
+  resource "charset-normalizer" do
+    url "https://files.pythonhosted.org/packages/56/31/7bcaf657fafb3c6db8c787a865434290b726653c912085fbd371e9b92e1c/charset-normalizer-2.0.12.tar.gz"
+    sha256 "2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"
   end
 
   resource "coloredlogs" do
@@ -80,13 +80,13 @@ class Ocrmypdf < Formula
   end
 
   resource "pdfminer.six" do
-    url "https://files.pythonhosted.org/packages/a0/e2/cf4782c86fbe487da3c9aed105878a4af7fbd64c7e3f85403722e6a82dae/pdfminer.six-20220319.tar.gz"
-    sha256 "eff2ce0abeaa4df94dc3461f70eab104487c7b4a2b3c7e9fd0aeec6c5f44d6a6"
+    url "https://files.pythonhosted.org/packages/d8/df/b2af9773a03f813adb3b17bf82c5195a4894a7416b35a75959408822e076/pdfminer.six-20220506.tar.gz"
+    sha256 "3d65c1a0f4a0465c709e191550ec77a684ebe0bcb562337ccbfb7aa228c52076"
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/b5/b7/b1ae6cb14af447e3b7401d03a035192d97e1ef42838c717b10b32d7d52a0/pikepdf-5.1.1.tar.gz"
-    sha256 "710535c679ab0d7b8249f72247832773e7a9a121dfbe9cad7f6465bd9bb45fae"
+    url "https://files.pythonhosted.org/packages/70/4c/0b6a5bf4855d8db580ca377c320b6709ed789f314355f2bd726cb7528b8f/pikepdf-5.1.3.tar.gz"
+    sha256 "c34e4239661d2ddf23caa1c4256f636c866ce8069a5052a2bf8ee06e3cae22f3"
   end
 
   resource "pluggy" do
@@ -100,13 +100,13 @@ class Ocrmypdf < Formula
   end
 
   resource "pyparsing" do
-    url "https://files.pythonhosted.org/packages/d6/60/9bed18f43275b34198eb9720d4c1238c68b3755620d20df0afd89424d32b/pyparsing-3.0.7.tar.gz"
-    sha256 "18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea"
+    url "https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz"
+    sha256 "2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"
   end
 
   resource "reportlab" do
-    url "https://files.pythonhosted.org/packages/50/c7/f80ab0ff9c7f7dc0b537fad0ee929ea5e56091b3f72de8e04ab3e02086b6/reportlab-3.6.8.tar.gz"
-    sha256 "dc7657fcb0bc3e485c3c869a44dddb52d711356a01a456664b7bef827222c982"
+    url "https://files.pythonhosted.org/packages/16/31/81ff7e3f9fd345cd4685f964fbc3d89a06f39a4f552ab1c2a5769a0f9013/reportlab-3.6.9.tar.gz"
+    sha256 "5d0cc3682456ad213150f6dbffe7d47eab737d809e517c316103376be548fb84"
   end
 
   resource "tqdm" do
