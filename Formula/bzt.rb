@@ -17,7 +17,9 @@ class Bzt < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "e41f7882fdb50307a1efb61947a7c7c56388704bf44ed2706eb6d2059548ba3a"
   end
 
+  depends_on "cmake" => :build
   depends_on "rust" => :build
+
   depends_on "numpy"
   depends_on "python@3.10"
   depends_on "six"
