@@ -20,6 +20,7 @@ class Nethogs < Formula
   uses_from_macos "ncurses"
 
   def install
+    ENV.append "CXXFLAGS", "-std=c++14"
     system "make", "install", "PREFIX=#{prefix}"
   end
 
