@@ -2,10 +2,9 @@ class Scorecard < Formula
   desc "Security health metrics for Open Source"
   homepage "https://github.com/ossf/scorecard"
   url "https://github.com/ossf/scorecard.git",
-      tag:      "v4.1.0",
-      revision: "33f80c93dc79f860d874857c511c4d26d399609d"
+      tag:      "v4.3.0",
+      revision: "6406cfd4e34156a5ad04fb4207bef0297f83903c"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/ossf/scorecard.git", branch: "main"
 
   bottle do
