@@ -38,6 +38,6 @@ class Scorecard < Formula
     expected_output = "InitRepo: repo unreachable: GET https://api.github.com/repos/google/oss-fuzz: 401"
     assert_match expected_output, output
 
-    assert_match version.to_s, shell_output("#{bin}/scorecard version")
+    assert_match version.to_s, shell_output("#{bin}/scorecard version 2>&1")
   end
 end
