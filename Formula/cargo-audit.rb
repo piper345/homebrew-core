@@ -40,7 +40,7 @@ class CargoAudit < Formula
   test do
     output = shell_output("#{bin}/cargo-audit audit 2>&1", 2)
     assert_predicate HOMEBREW_CACHE/"cargo_cache/advisory-db", :exist?
-    assert_match "couldn't open Cargo.lock: No such file or directory", output
+    assert_match "not found: Couldn't load Cargo.lock", output
 
     cp_r "#{pkgshare}/support/base64_vuln/.", testpath
     assert_match "error: 1 vulnerability found!", shell_output("#{bin}/cargo-audit audit 2>&1", 1)
