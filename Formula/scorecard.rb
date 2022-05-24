@@ -19,12 +19,13 @@ class Scorecard < Formula
   depends_on "go" => :build
 
   def install
+    pkg = "sigs.k8s.io/release-utils/version"
     ldflags = %W[
       -s -w
-      -X github.com/ossf/scorecard/v4/pkg.gitVersion=#{version}
-      -X github.com/ossf/scorecard/v4/pkg.gitCommit=#{Utils.git_head}
-      -X github.com/ossf/scorecard/v4/pkg.gitTreeState=clean
-      -X github.com/ossf/scorecard/v4/pkg.buildDate=#{time.iso8601}
+      -X #{pkg}.gitVersion=#{version}
+      -X #{pkg}.gitCommit=#{Utils.git_head}
+      -X #{pkg}.gitTreeState=clean
+      -X #{pkg}.buildDate=#{time.iso8601}
     ]
     system "go", "build", *std_go_args(ldflags: ldflags)
     system "make", "generate-docs"
