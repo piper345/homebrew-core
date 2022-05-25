@@ -18,6 +18,7 @@ class Ocrmypdf < Formula
 
   depends_on "pkg-config" => :build
   depends_on "rust" => :build
+  depends_on "freetype"
   depends_on "ghostscript"
   depends_on "jbig2enc"
   depends_on "libffi"
