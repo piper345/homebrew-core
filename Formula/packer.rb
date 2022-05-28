@@ -4,7 +4,7 @@ class Packer < Formula
   url "https://github.com/hashicorp/packer/archive/v1.8.1.tar.gz"
   sha256 "2a264119f7bdeeb82e79e0c9a02e4fa3d9bdf3e984c47e0c89ca2856eecb3b88"
   license "MPL-2.0"
-  head "https://github.com/hashicorp/packer.git", branch: "master"
+  head "https://github.com/hashicorp/packer.git", branch: "main"
 
   livecheck do
     url "https://releases.hashicorp.com/packer/"
