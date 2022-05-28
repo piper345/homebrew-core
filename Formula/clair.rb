@@ -31,8 +31,24 @@ class Clair < Formula
   end
 
   test do
-    cp etc/"clair/config.yaml.sample", testpath
-    output = shell_output("#{bin}/clair -conf #{testpath}/config.yaml.sample -mode combo 2>&1", 1)
+    http_port = free_port
+    db_port = free_port
+    (testpath/"config.yaml").write <<~EOS
+      ---
+      introspection_addr: "localhost:#{free_port}"
+      http_listen_addr: "localhost:#{http_port}"
+      indexer:
+        connstring: host=localhost port=#{db_port} user=clair dbname=clair sslmode=disable
+      matcher:
+        indexer_addr: "localhost:#{http_port}"
+        connstring: host=localhost port=#{db_port} user=clair dbname=clair sslmode=disable
+      notifier:
+        indexer_addr: "localhost:#{http_port}"
+        matcher_addr: "localhost:#{http_port}"
+        connstring: host=localhost port=#{db_port} user=clair dbname=clair sslmode=disable
+    EOS
+
+    output = shell_output("#{bin}/clair -conf #{testpath}/config.yaml -mode combo 2>&1", 1)
     # requires a Postgres database
     assert_match "service initialization failed: failed to initialize indexer: failed to create ConnPool", output
   end
