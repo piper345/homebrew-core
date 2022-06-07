@@ -1,10 +1,9 @@
 class OcamlFindlib < Formula
   desc "OCaml library manager"
   homepage "http://projects.camlcity.org/projects/findlib.html"
-  url "http://download.camlcity.org/download/findlib-1.9.1.tar.gz"
-  sha256 "2b42b8bd54488d64c4bf3cb7054b4b37bd30c1dc12bd431ea1e4d7ad8a980fe2"
+  url "http://download.camlcity.org/download/findlib-1.9.4.tar.gz"
+  sha256 "20fecdbfc0cc8c8f3779e81f1fb91a2c5eaff421037679d4c64ab14a32e8f2ee"
   license "MIT"
-  revision 1
 
   livecheck do
     url "http://download.camlcity.org/download/"
