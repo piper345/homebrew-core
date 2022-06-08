@@ -27,7 +27,7 @@ class Trino < Formula
 
   resource "trino-src" do
     url "https://github.com/trinodb/trino/archive/384.tar.gz", using: :nounzip
-    sha256 "bab8287f387931faa228b698a30886c084f2981c4313b8ebef4340c685c490c8"
+    sha256 "363d1937a9c29f7685b7e14351ff849de52b5f70bc598ce87bc3e851cef92793"
   end
 
   resource "trino-cli" do
