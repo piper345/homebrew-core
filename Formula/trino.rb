@@ -32,7 +32,7 @@ class Trino < Formula
 
   resource "trino-cli" do
     url "https://search.maven.org/remotecontent?filepath=io/trino/trino-cli/384/trino-cli-384-executable.jar"
-    sha256 "0b96af66dca43353389be3c348f0472a9e709ace22c9a2a9689acb64b70beac1"
+    sha256 "3dd88bfcf0b7e998bd05535fb2a41e37639ddae7d1ee01d8c5fcf73814683785"
   end
 
   def install
