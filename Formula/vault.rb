@@ -32,6 +32,7 @@ class Vault < Formula
   depends_on "yarn" => :build
 
   def install
+    ENV["PYTHON"] = Formula["python@3.10"].opt_bin/"python3"
     ENV.prepend_path "PATH", "#{ENV["GOPATH"]}/bin"
     system "make", "bootstrap", "static-dist", "dev-ui"
     bin.install "bin/vault"
