@@ -28,6 +28,7 @@ class Vault < Formula
   depends_on "gox" => :build
   # Cannot build with `node` while upstream depends on node-sass<6
   depends_on "node@14" => :build
+  depends_on "python@3.10" => :build
   depends_on "yarn" => :build
 
   def install
