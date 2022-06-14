@@ -31,7 +31,7 @@ class Gnunet < Formula
 
   def install
     ENV.deparallelize if OS.linux?
-    system "./configure", "--prefix=#{prefix}", "--with-microhttpd"
+    system "./configure", *std_configure_args
     system "make", "install"
   end
 
