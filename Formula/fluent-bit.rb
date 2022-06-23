@@ -23,6 +23,7 @@ class FluentBit < Formula
   depends_on "bison" => :build
   depends_on "cmake" => :build
   depends_on "flex" => :build
+  depends_on "pkg-config" => :build
 
   on_linux do
     depends_on "openssl@1.1"
