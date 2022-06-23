@@ -24,6 +24,8 @@ class FluentBit < Formula
   depends_on "cmake" => :build
   depends_on "flex" => :build
   depends_on "pkg-config" => :build
+  
+  depends_on "libyaml"
 
   on_linux do
     depends_on "openssl@1.1"
