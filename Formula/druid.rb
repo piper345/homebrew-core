@@ -26,10 +26,6 @@ class Druid < Formula
     sha256 "5bba9ff50e5e637a0996a730619dee19ccae274883a4d28c890d945252bb0e12"
   end
 
-  # Fixes: node.sh: source: not found. Remove with next release
-  # https://github.com/apache/druid/pull/12014
-  patch :DATA
-
   def install
     libexec.install Dir["*"]
 
@@ -96,16 +92,3 @@ class Druid < Formula
     end
   end
 end
-
-__END__
-diff -Naur apache-druid-0.22.0-old/bin/node.sh apache-druid-0.22.0/bin/node.sh
---- apache-druid-0.22.0-old/bin/node.sh	2021-11-30 21:39:18.000000000 +0100
-+++ apache-druid-0.22.0/bin/node.sh	2021-11-30 21:40:08.000000000 +0100
-@@ -41,7 +41,7 @@
- PID_DIR="${DRUID_PID_DIR:=var/druid/pids}"
- WHEREAMI="$(dirname "$0")"
- WHEREAMI="$(cd "$WHEREAMI" && pwd)"
--JAVA_BIN_DIR="$(source "$WHEREAMI"/java-util && get_java_bin_dir)"
-+JAVA_BIN_DIR="$(. /"$WHEREAMI"/java-util && get_java_bin_dir)"
-
- pid=$PID_DIR/$nodeType.pid
