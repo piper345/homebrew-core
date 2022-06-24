@@ -43,7 +43,7 @@ class Druid < Formula
       s.gsub! "nohup $JAVA", "nohup $JAVA -Ddruid.extensions.directory=\"#{libexec}/extensions\""
       s.gsub! ":=lib", ":=#{libexec}/lib"
       s.gsub! ":=conf/druid", ":=#{libexec}/conf/druid"
-      s.gsub! ":=log", ":=#{var}/druid/log"
+      s.gsub! ":=${WHEREAMI}/log", ":=#{var}/druid/log"
       s.gsub! ":=var/druid/pids", ":=#{var}/druid/pids"
     end
 
