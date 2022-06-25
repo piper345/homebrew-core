@@ -19,7 +19,7 @@ class Druid < Formula
   end
 
   depends_on "zookeeper" => :test
-  depends_on "openjdk@8"
+  depends_on "openjdk@11"
 
   resource "mysql-connector-java" do
     url "https://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/5.1.49/mysql-connector-java-5.1.49.jar"
@@ -52,7 +52,7 @@ class Druid < Formula
     end
 
     bin.install Dir["#{libexec}/bin/*.sh"]
-    bin.env_script_all_files libexec/"bin", Language::Java.overridable_java_home_env("1.8")
+    bin.env_script_all_files libexec/"bin", Language::Java.overridable_java_home_env("11")
 
     Pathname.glob("#{bin}/*.sh") do |file|
       mv file, bin/"druid-#{file.basename}"
