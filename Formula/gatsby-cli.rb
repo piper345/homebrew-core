@@ -35,7 +35,7 @@ class GatsbyCli < Formula
     node_modules = libexec/"lib/node_modules/#{name}/node_modules"
     arch = Hardware::CPU.intel? ? "x64" : Hardware::CPU.arch.to_s
     if OS.linux?
-      %w[lmdb @msgpackr-extract/msgpackr-extract].each do |mod|
+      %w[@lmdb/lmdb @msgpackr-extract/msgpackr-extract].each do |mod|
         node_modules.glob("#{mod}-linux-#{arch}/*.musl.node")
                     .map(&:unlink)
                     .empty? && raise("Unable to find #{mod} musl library to delete.")
