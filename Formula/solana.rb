@@ -30,12 +30,16 @@ class Solana < Formula
 
   on_linux do
     depends_on "pkg-config" => :build
-
     depends_on "openssl@1.1"
     depends_on "systemd"
   end
 
   def install
+    # Fix for error: cannot find derive macro `Deserialize` in this scope. Already fixed on 1.11.x.
+    # Can remove if backported to 1.10.x or when 1.11.x has a stable release.
+    # Ref: https://github.com/solana-labs/solana/commit/12e24a90a009d7b8ab1ed5bb5bd42e36a4927deb
+    inreplace "net-shaper/Cargo.toml", /^serde = ("[\d.]+")$/, "serde = { version = \\1, features = [\"derive\"] }"
+
     %w[
       cli
       bench-streamer
@@ -48,9 +52,7 @@ class Solana < Formula
       tokens
       watchtower
     ].each do |bin|
-      cd bin do
-        system "cargo", "install", "--no-default-features", *std_cargo_args
-      end
+      system "cargo", "install", "--no-default-features", *std_cargo_args(path: bin)
     end
   end
 
