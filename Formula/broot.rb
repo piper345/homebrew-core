@@ -49,9 +49,9 @@ class Broot < Formula
 
     require "pty"
     require "io/console"
-    PTY.spawn(bin/"broot", "--", "--cmd", ":pt", "--color", "no", "--out", testpath/"output.txt",
+    PTY.spawn(bin/"broot", "-c", ":print_tree", "--color", "no", "--outcmd", testpath/"output.txt",
                 err: :out) do |r, w, pid|
-      r.winsize = [20, 80] # broot dependency termimad requires width > 2
+      r.winsize = [20, 80] # broot dependency terminal requires width > 2
       w.write "n\r"
       assert_match "New Configuration file written in", r.read
       Process.wait(pid)
