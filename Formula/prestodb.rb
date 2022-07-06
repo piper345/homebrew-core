@@ -26,7 +26,7 @@ class Prestodb < Formula
 
   resource "presto-cli" do
     url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-cli/0.273.4/presto-cli-0.273.4-executable.jar"
-    sha256 "9a532ff58c4bf8a1a585f2088821ed695cb93019828476974719ef28fa85bc87"
+    sha256 "40c6babf038b63210ede4f2cf09976244c75fe95cedab0b7ec00332f7eb7d9f2"
   end
 
   def install
