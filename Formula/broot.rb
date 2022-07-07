@@ -53,7 +53,7 @@ class Broot < Formula
                 err: :out) do |r, w, pid|
       r.winsize = [20, 80] # broot dependency terminal requires width > 2
       w.write "n\r"
-      assert_match "New Configuration file written in", r.read
+      assert_match "New Configuration files written in", r.read
       Process.wait(pid)
     end
     assert_equal 0, $CHILD_STATUS.exitstatus
