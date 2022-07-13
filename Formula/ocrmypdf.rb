@@ -3,8 +3,8 @@ class Ocrmypdf < Formula
 
   desc "Adds an OCR text layer to scanned PDF files"
   homepage "https://ocrmypdf.readthedocs.io/en/latest/"
-  url "https://files.pythonhosted.org/packages/64/f5/987f184d28bfa9cc4c91797b0d15e06dcaebe8db9efadf622f53e721dc39/ocrmypdf-13.6.0.tar.gz"
-  sha256 "ed2ad72ef796770c38edf5eb43392c6d166eb8959ad14a19ea0350c510b9c121"
+  url "https://files.pythonhosted.org/packages/21/8f/6da59478b10241c8d2ecbc39eb57c1481fce2a6ddbffa52c483db0d2f509/ocrmypdf-13.6.1.tar.gz"
+  sha256 "c98061536decf1686e057cfe555b435605d68ab0838de3fccef0e7f3cc591eab"
   license "MPL-2.0"
 
   bottle do
@@ -56,8 +56,8 @@ class Ocrmypdf < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/67/82/9dd8ef695c7f928b25927e8956f73bdba09a752a51871678f320c498c535/cryptography-37.0.3.tar.gz"
-    sha256 "ae430d51c67ac638dfbb42edf56c669ca9c74744f4d225ad11c6f3d355858187"
+    url "https://files.pythonhosted.org/packages/89/d9/5fcd312d5cce0b4d7ee8b551a0ea99e4ea9db0fdbf6dd455a19042e3370b/cryptography-37.0.4.tar.gz"
+    sha256 "63f9c17c0e2474ccbebc9302ce2f07b55b3b3fcb211ded18a42d5764f5c10a82"
   end
 
   resource "deprecation" do
@@ -91,8 +91,8 @@ class Ocrmypdf < Formula
   end
 
   resource "pikepdf" do
-    url "https://files.pythonhosted.org/packages/74/11/1551df95a3303f67c496b2596170a9524fa9036eab7365aa4928bec701ab/pikepdf-5.2.0.tar.gz"
-    sha256 "092846e2b01b04e2bd0d208fd59ccc010941e70fc4aca2968b5cb3fbcc2e686d"
+    url "https://files.pythonhosted.org/packages/d1/8a/ae3c75096e7f8d00912a3aea24e1ed3607b6af4fda87db3d75fa9bd85180/pikepdf-5.3.2.tar.gz"
+    sha256 "fe7beef116a6bc1ceedab846c27ba806a6d18776e763bf9b3829e524177e5c68"
   end
 
   resource "pluggy" do
@@ -111,8 +111,8 @@ class Ocrmypdf < Formula
   end
 
   resource "reportlab" do
-    url "https://files.pythonhosted.org/packages/3c/90/e2a9ec7a1fc4ab4a028d1d787d1895fbf71889ac1f31462045bd0a57e78c/reportlab-3.6.10.tar.gz"
-    sha256 "bf8cba95a2d5cf731e8b74c92b4f07d79ef286a2a78b617300e37e51cf955cb2"
+    url "https://files.pythonhosted.org/packages/a6/d0/bdee3e8a7ba5f2dc8bacea10f4fdd1264b1dd9e53d96d318773180634a00/reportlab-3.6.11.tar.gz"
+    sha256 "04fc4420f0548815d0623e031c86a1f7f3f3003e699d9af7148742e2d72b024a"
   end
 
   resource "tqdm" do
