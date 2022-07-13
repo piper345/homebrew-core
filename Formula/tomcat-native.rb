@@ -18,7 +18,7 @@ class TomcatNative < Formula
   depends_on "libtool" => :build
   depends_on "apr"
   depends_on "openjdk"
-  depends_on "openssl@1.1"
+  depends_on "openssl@3"
 
   def install
     cd "native" do
