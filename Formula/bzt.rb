@@ -188,22 +188,7 @@ class Bzt < Formula
   end
 
   def install
-    venv = virtualenv_create(libexec, "python3")
-
-    # Avoid building `cmake` and `ninja`. Resources can use formulae instead.
-    cmake_build_resources = %w[jarowinkler rapidfuzz]
-    cmake_build_resources.each do |r|
-      resource(r).stage do
-        inreplace "pyproject.toml" do |s|
-          s.sub!(/\s*"cmake;[^"]*",/, "")
-          s.sub!(/\s*"ninja;[^"]*",/, "")
-        end
-        venv.pip_install Pathname.pwd
-      end
-    end
-
-    venv.pip_install resources.reject { |r| cmake_build_resources.include? r.name }
-    venv.pip_install_and_link buildpath
+    virtualenv_install_with_resources
   end
 
   test do
