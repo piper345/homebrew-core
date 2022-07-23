@@ -5,8 +5,8 @@ class Emscripten < Formula
   homepage "https://emscripten.org/"
   # TODO: Remove from versioned dependency conflict allowlist when `python`
   #       symlink is migrated to `python@3.10`.
-  url "https://github.com/emscripten-core/emscripten/archive/3.1.16.tar.gz"
-  sha256 "5e7b89fdc4387dcfc642d2f9094d6a71f57615b9ed8fe806cea07e3e48f3a72c"
+  url "https://github.com/emscripten-core/emscripten/archive/3.1.17.tar.gz"
+  sha256 "dd74aa6155fd58fc7cbce78303bfd2014a2a33db23c948d885a0115507067b60"
   license all_of: [
     "Apache-2.0", # binaryen
     "Apache-2.0" => { with: "LLVM-exception" }, # llvm
