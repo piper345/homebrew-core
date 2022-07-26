@@ -87,6 +87,11 @@ class Apt < Formula
     sha256 "dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd"
   end
 
+  resource "Syntax::Keyword::Try" do
+    url "https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Syntax-Keyword-Try-0.27.tar.gz"
+    sha256 "246e1b033e3ff22fd5420550d4b6e0d56b438cdcbb9d35cbe8b1b5ba1574de23"
+  end
+
   def install
     # Find our docbook catalog
     ENV["XML_CATALOG_FILES"] = "#{etc}/xml/catalog"
@@ -109,20 +114,19 @@ class Apt < Formula
       end
     end
 
-    mkdir "build" do
-      system "cmake", "..",
-             "-DDPKG_DATADIR=#{Formula["dpkg"].opt_libexec}/share/dpkg",
-             "-DDOCBOOK_XSL=#{Formula["docbook-xsl"].opt_prefix}/docbook-xsl",
-             "-DBERKELEY_INCLUDE_DIRS=#{Formula["berkeley-db"].opt_include}",
-             *std_cmake_args
-      system "make", "install"
-    end
+    system "cmake", "-S", ".", "-B", "build",
+                    "-DDPKG_DATADIR=#{Formula["dpkg"].opt_libexec}/share/dpkg",
+                    "-DDOCBOOK_XSL=#{Formula["docbook-xsl"].opt_prefix}/docbook-xsl",
+                    "-DBERKELEY_INCLUDE_DIRS=#{Formula["berkeley-db"].opt_include}",
+                    *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
 
-    mkdir_p etc/"apt/apt.conf.d/"
+    (pkgetc/"apt.conf.d").mkpath
   end
 
   test do
     assert_match "The package lists or status file could not be parsed or opened.",
-      shell_output("#{bin}/apt list 2>&1", 100)
+                 shell_output("#{bin}/apt list 2>&1", 100)
   end
 end
