@@ -107,10 +107,16 @@ class Apt < Formula
     cpan_resources = resources.map(&:name).to_set - ["triehash"]
     cpan_resources.each do |r|
       resource(r).stage do
-        chmod 0644, "MYMETA.yml" if r == "SGMLS"
-        system "perl", "Makefile.PL", "INSTALL_BASE=#{buildpath}"
-        system "make"
-        system "make", "install"
+        if r == "Syntax::Keyword::Try"
+          system "perl", "Build.PL", "--install_base", buildpath
+          system "./Build"
+          system "./Build", "install"
+        else
+          chmod 0644, "MYMETA.yml" if r == "SGMLS"
+          system "perl", "Makefile.PL", "INSTALL_BASE=#{buildpath}"
+          system "make"
+          system "make", "install"
+        end
       end
     end
 
