@@ -1,9 +1,19 @@
 class Dynare < Formula
   desc "Platform for economic models, particularly DSGE and OLG models"
   homepage "https://www.dynare.org/"
-  url "https://www.dynare.org/release/source/dynare-5.2.tar.xz"
-  sha256 "01849a45d87cac3c1a8e8bf55030d026054ffb9b1ebf5ec09c9981a08d60f55c"
   license "GPL-3.0-or-later"
+
+  stable do
+    url "https://www.dynare.org/release/source/dynare-5.2.tar.xz"
+    sha256 "01849a45d87cac3c1a8e8bf55030d026054ffb9b1ebf5ec09c9981a08d60f55c"
+
+    # Fixes a build error on ARM.
+    patch do
+      url "https://git.dynare.org/Dynare/preprocessor/-/commit/e0c3cb72b7337a5eecd32a77183af9f1609a86ef.diff"
+      sha256 "4fe156dce78fba9ec280bceff66f263c3a9dbcd230cc5bac96b5a59c14c7554f"
+      directory "preprocessor"
+    end
+  end
 
   livecheck do
     url "https://www.dynare.org/download/"
