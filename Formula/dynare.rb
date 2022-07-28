@@ -2,12 +2,11 @@ class Dynare < Formula
   desc "Platform for economic models, particularly DSGE and OLG models"
   homepage "https://www.dynare.org/"
   license "GPL-3.0-or-later"
-  revision 1
 
   # Temporary stable block to patch in Octave 7 support. Remove in the next release.
   stable do
-    url "https://www.dynare.org/release/source/dynare-5.1.tar.xz"
-    sha256 "269b2b52d9e7af0bf06041b48e730dd5c2fb89577bed24ad5e4b51e0dca9dbbe"
+    url "https://www.dynare.org/release/source/dynare-5.2.tar.xz"
+    sha256 "01849a45d87cac3c1a8e8bf55030d026054ffb9b1ebf5ec09c9981a08d60f55c"
 
     # Temporary build dependencies to apply configure.ac patches.
     # TODO: Update install to only run autoreconf on head in the next release.
