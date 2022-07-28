@@ -66,13 +66,6 @@ class Dynare < Formula
       (buildpath/"slicot/lib").install "libslicot_pic.a", "libslicot64_pic.a"
     end
 
-    # GCC is the only compiler supported by upstream
-    # https://git.dynare.org/Dynare/dynare/-/blob/master/README.md#general-instructions
-    gcc = Formula["gcc"]
-    gcc_major_ver = gcc.any_installed_version.major
-    ENV.send("gcc-#{gcc_major_ver}") # Switch compiler to GCC
-    ENV.append "LDFLAGS", "-static-libgcc"
-
     system "autoreconf", "--force", "--install", "--verbose" if build.head?
     system "./configure", *std_configure_args,
                           "--disable-silent-rules",
@@ -83,8 +76,9 @@ class Dynare < Formula
                           "--with-matio=#{Formula["libmatio"].prefix}",
                           "--with-slicot=#{buildpath}/slicot"
 
+    gcc = Formula["gcc"]
     # Octave hardcodes its paths which causes problems on GCC minor version bumps
-    flibs = "-L#{gcc.lib}/gcc/#{gcc_major_ver} -lgfortran -lquadmath -lm"
+    flibs = "-L#{gcc.lib}/gcc/#{gcc.any_installed_version.major} -lgfortran -lquadmath -lm"
     system "make", "install", "FLIBS=#{flibs}"
   end
 
