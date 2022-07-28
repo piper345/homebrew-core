@@ -12,8 +12,11 @@ class Dynare < Formula
       # Needed since we patch a `Makefile.am` below.
       depends_on "autoconf" => :build
       depends_on "automake" => :build
+      depends_on "bison" => :build
+      depends_on "flex" => :build
 
       # Fixes a build error on ARM.
+      # Remove the `Hardware::CPU.arm?` in the `autoreconf` call below when this is removed.
       patch do
         url "https://git.dynare.org/Dynare/preprocessor/-/commit/e0c3cb72b7337a5eecd32a77183af9f1609a86ef.diff"
         sha256 "4fe156dce78fba9ec280bceff66f263c3a9dbcd230cc5bac96b5a59c14c7554f"
@@ -91,7 +94,8 @@ class Dynare < Formula
     ENV["CXX"] = Formula["gcc"].opt_bin/"g++-#{gcc_major_ver}"
     ENV.append "LDFLAGS", "-static-libgcc"
 
-    system "autoreconf", "--force", "--install", "--verbose" if build.head?
+    # Remove `Hardware::CPU.arm?` when the patch is no longer needed.
+    system "autoreconf", "--force", "--install", "--verbose" if build.head? || Hardware::CPU.arm?
     system "./configure", *std_configure_args,
                           "--disable-silent-rules",
                           "--disable-doc",
