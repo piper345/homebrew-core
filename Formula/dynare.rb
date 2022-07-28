@@ -1,45 +1,9 @@
 class Dynare < Formula
   desc "Platform for economic models, particularly DSGE and OLG models"
   homepage "https://www.dynare.org/"
+  url "https://www.dynare.org/release/source/dynare-5.2.tar.xz"
+  sha256 "01849a45d87cac3c1a8e8bf55030d026054ffb9b1ebf5ec09c9981a08d60f55c"
   license "GPL-3.0-or-later"
-
-  # Temporary stable block to patch in Octave 7 support. Remove in the next release.
-  stable do
-    url "https://www.dynare.org/release/source/dynare-5.2.tar.xz"
-    sha256 "01849a45d87cac3c1a8e8bf55030d026054ffb9b1ebf5ec09c9981a08d60f55c"
-
-    # Temporary build dependencies to apply configure.ac patches.
-    # TODO: Update install to only run autoreconf on head in the next release.
-    depends_on "autoconf" => :build
-    depends_on "automake" => :build
-    depends_on "bison" => :build
-    depends_on "flex" => :build
-
-    # Fix build with Octave 7. Remove in the next release.
-    patch do
-      url "https://git.dynare.org/Dynare/dynare/-/commit/b3c910eed8ba384f59dfb5b3fdbdf3ac7191745d.diff"
-      sha256 "ee9f4a7f417442a8ff2ae630b7b225ae74ffc4c9df0ea668a1c1c705d616e07c"
-    end
-    patch do
-      url "https://git.dynare.org/Dynare/dynare/-/commit/f54d87dfc08d0a473f0334daf2142385181a212f.diff"
-      sha256 "afa605640b98221c6ffe5be44d6a8013e27fb6d9c36af7939ebd8b14e471b07e"
-    end
-    patch do
-      url "https://git.dynare.org/Dynare/dynare/-/commit/b39e352f8d01eedbc0627bb74befb9568bcc5376.diff"
-      sha256 "9d667a4a124d8b9f4efe87abb2f1d944e2e582144b4b6eb3c3bfc5ad30868b61"
-    end
-    patch do
-      url "https://git.dynare.org/Dynare/dseries/-/commit/3fddb038fc11cdb182a9438f6951f29104db8dfa.diff"
-      sha256 "5d3d4b041be33c7402ca53a49bc9e162e4dd4c9e1ad00b48650bc46dcbc608a2"
-      directory "matlab/modules/dseries"
-    end
-    patch do
-      url "https://git.dynare.org/Dynare/reporting/-/commit/98da514e23f8709348ddf377eba96aff85ebfc4b.diff"
-      sha256 "b730bbbaabccbb9fe13060d72e647be6c4d2217b836befedadb48ff454017fa9"
-      directory "matlab/modules/reporting"
-    end
-    patch :DATA # https://git.dynare.org/Dynare/dynare/-/commit/00610cf3731e84538a94b2e384d5c333ebca7943
-  end
 
   livecheck do
     url "https://www.dynare.org/download/"
@@ -106,11 +70,10 @@ class Dynare < Formula
     # https://git.dynare.org/Dynare/dynare/-/blob/master/README.md#general-instructions
     gcc = Formula["gcc"]
     gcc_major_ver = gcc.any_installed_version.major
-    ENV["CC"] = Formula["gcc"].opt_bin/"gcc-#{gcc_major_ver}"
-    ENV["CXX"] = Formula["gcc"].opt_bin/"g++-#{gcc_major_ver}"
+    ENV.send("gcc-#{gcc_major_ver}") # Switch compiler to GCC
     ENV.append "LDFLAGS", "-static-libgcc"
 
-    system "autoreconf", "-fvi" # FIXME: if build.head?
+    system "autoreconf", "--force", "--install", "--verbose" if build.head?
     system "./configure", *std_configure_args,
                           "--disable-silent-rules",
                           "--disable-doc",
