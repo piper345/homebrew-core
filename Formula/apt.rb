@@ -87,6 +87,16 @@ class Apt < Formula
     sha256 "dbe0b56129975b2f83a02841e8e0ed47be80f060686c66ea37e529d97aa70ccd"
   end
 
+  resource "ExtUtils::CChecker" do
+    url "https://cpan.metacpan.org/authors/id/P/PE/PEVANS/ExtUtils-CChecker-0.11.tar.gz"
+    sha256 "117736677e37fc611f5b76374d7f952e1970eb80e1f6ad5150d516e7ae531bf5"
+  end
+
+  resource "XS::Parse::Keyword::Builder" do
+    url "https://cpan.metacpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-0.25.tar.gz"
+    sha256 "f5edb30cf7c7f220d0c6c31dc1eb554032840a99c7c298314f5cc3fef66c72c7"
+  end
+
   resource "Syntax::Keyword::Try" do
     url "https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Syntax-Keyword-Try-0.27.tar.gz"
     sha256 "246e1b033e3ff22fd5420550d4b6e0d56b438cdcbb9d35cbe8b1b5ba1574de23"
@@ -107,7 +117,7 @@ class Apt < Formula
     cpan_resources = resources.map(&:name).to_set - ["triehash"]
     cpan_resources.each do |r|
       resource(r).stage do
-        if r == "Syntax::Keyword::Try"
+        if File.exist? "Build.PL"
           system "perl", "Build.PL", "--install_base", buildpath
           system "./Build"
           system "./Build", "install"
