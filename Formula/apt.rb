@@ -42,6 +42,12 @@ class Apt < Formula
 
   fails_with gcc: "5"
 
+  # List this first as the modules below require it.
+  resource "Module::Build" do
+    url "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4231.tar.gz"
+    sha256 "7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717"
+  end
+
   resource "SGMLS" do
     url "https://cpan.metacpan.org/authors/id/R/RA/RAAB/SGMLSpm-1.1.tar.gz"
     sha256 "550c9245291c8df2242f7e88f7921a0f636c7eec92c644418e7d89cfea70b2bd"
@@ -75,11 +81,6 @@ class Apt < Formula
   resource "YAML::Tiny" do
     url "https://cpan.metacpan.org/authors/id/E/ET/ETHER/YAML-Tiny-1.73.tar.gz"
     sha256 "bc315fa12e8f1e3ee5e2f430d90b708a5dc7e47c867dba8dce3a6b8fbe257744"
-  end
-
-  resource "Module::Build" do
-    url "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4231.tar.gz"
-    sha256 "7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717"
   end
 
   resource "Pod::Parser" do
@@ -117,7 +118,7 @@ class Apt < Formula
     cpan_resources = resources.map(&:name).to_set - ["triehash"]
     cpan_resources.each do |r|
       resource(r).stage do
-        if File.exist? "Build.PL"
+        if File.exist?("Build.PL") && r != "Module::Build"
           system "perl", "Build.PL", "--install_base", buildpath
           system "./Build"
           system "./Build", "install"
