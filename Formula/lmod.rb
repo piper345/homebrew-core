@@ -18,6 +18,7 @@ class Lmod < Formula
   depends_on "pkg-config" => :build
   depends_on "lua"
 
+  uses_from_macos "bc" => :build
   uses_from_macos "libxcrypt"
   uses_from_macos "tcl-tk"
 
