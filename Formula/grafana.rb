@@ -16,7 +16,7 @@ class Grafana < Formula
   end
 
   depends_on "go" => :build
-  depends_on "node" => :build
+  depends_on "node@16" => :build
   depends_on "yarn" => :build
 
   uses_from_macos "zlib"
