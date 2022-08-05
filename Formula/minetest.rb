@@ -7,30 +7,14 @@ class Minetest < Formula
     url "https://github.com/minetest/minetest/archive/5.6.0.tar.gz"
     sha256 "3fdbc0c8d9f6a18c12954ba0caedb548a22f367520f59d079804a21de0347a91"
 
-    # This patch fixes https://github.com/minetest/minetest/issues/12172
-    # It has been merged upstream, and so should not be necessary for the next
-    # minetest release (5.5.2)
-    patch do
-      url "https://github.com/minetest/minetest/commit/951604e29ff9d4b796003264574e06031c014a3f.patch?full_index=1"
-      sha256 "46ca51997cadba9ec714de1988097ae37dec013def1cc4ae560d8de6b0f1d0bc"
-    end
-
     resource "irrlichtmt" do
-      url "https://github.com/minetest/irrlicht/archive/1.9.0mt4.tar.gz"
-      sha256 "a0e2e5239ebca804adf54400ccaacaf228ec09223cfb2e1daddc9bf2694176e6"
-
-      # This patch fixes https://github.com/minetest/minetest/issues/11541
-      # It has been merged upstream, and so should not be necessary for the
-      # next irrlicht release (1.9.0mt7)
-      patch do
-        url "https://github.com/minetest/irrlicht/commit/392df9bae3de8a71bf1d119a58dc2d9f1388751d.patch?full_index=1"
-        sha256 "127b6ec571e6d6b2617bf9ece98b756da651dc1a9842fbf0e5a53f982fef1d6d"
-      end
+      url "https://github.com/minetest/irrlicht/archive/1.9.0mt7.tar.gz"
+      sha256 "c12cdbd4a852e1e6ebf7ba22789aa057a1a7f2d585dd81a2412a62f57a0e2619"
     end
 
     resource "minetest_game" do
-      url "https://github.com/minetest/minetest_game/archive/5.5.0.tar.gz"
-      sha256 "1e87252e26d6b1d3efe7720e3e097d489339dea4dd25980a828d5da212b01aaa"
+      url "https://github.com/minetest/minetest_game/archive/5.6.0.tar.gz"
+      sha256 "fd991d42c253db380559c593a2b035f22e07a81f867b5380a2f045e9a4d04c87"
     end
   end
 
