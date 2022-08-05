@@ -2,11 +2,10 @@ class Minetest < Formula
   desc "Free, open source voxel game engine and game"
   homepage "https://www.minetest.net/"
   license "LGPL-2.1-or-later"
-  revision 2
 
   stable do
-    url "https://github.com/minetest/minetest/archive/5.5.1.tar.gz"
-    sha256 "dc0ae5188ef351db85c38b27f38f8549b133ed82aa46daea6deee148aa3454f4"
+    url "https://github.com/minetest/minetest/archive/5.6.0.tar.gz"
+    sha256 "3fdbc0c8d9f6a18c12954ba0caedb548a22f367520f59d079804a21de0347a91"
 
     # This patch fixes https://github.com/minetest/minetest/issues/12172
     # It has been merged upstream, and so should not be necessary for the next
