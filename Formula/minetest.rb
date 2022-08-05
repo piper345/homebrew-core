@@ -66,6 +66,7 @@ class Minetest < Formula
     depends_on "libxxf86vm"
     depends_on "mesa"
     depends_on "openal-soft"
+    depends_on "xinput"
   end
 
   def install
