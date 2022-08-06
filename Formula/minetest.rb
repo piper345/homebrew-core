@@ -53,7 +53,7 @@ class Minetest < Formula
   depends_on "libogg"
   depends_on "libpng"
   depends_on "libvorbis"
-  depends_on "luajit-openresty"
+  depends_on "luajit"
   depends_on "zstd"
 
   uses_from_macos "curl"
@@ -98,22 +98,12 @@ class Minetest < Formula
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
-  end
-
-  def caveats
-    <<~EOS
-      Put additional subgames and mods into "games" and "mods" folders under
-      "~/Library/Application Support/minetest/", respectively (you may have
-      to create those folders first).
-
-      To start minetest, from a terminal run
-      "#{prefix}/minetest.app/Contents/MacOS/minetest".
-    EOS
+    
+    bin.write_exec_script prefix/"minetest.app/Contents/MacOS/minetest" if OS.mac?
   end
 
   test do
-    minetest = OS.mac? ? prefix/"minetest.app/Contents/MacOS/minetest" : bin/"minetest"
-    output = shell_output("#{minetest} --version")
+    output = shell_output("#{bin}/minetest --version")
     assert_match "USE_CURL=1", output
     assert_match "USE_GETTEXT=1", output
     assert_match "USE_SOUND=1", output
