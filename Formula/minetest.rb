@@ -98,7 +98,7 @@ class Minetest < Formula
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
-    
+
     bin.write_exec_script prefix/"minetest.app/Contents/MacOS/minetest" if OS.mac?
   end
 
