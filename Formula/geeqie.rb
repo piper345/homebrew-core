@@ -19,9 +19,8 @@ class Geeqie < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "5d4a1a0535b8015c07d3a490e454216480af9d68d67e00e16af779d3aeaa9a57"
   end
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
   depends_on "intltool" => :build
+  depends_on "meson" => :build
   depends_on "pkg-config" => :build
   depends_on "adwaita-icon-theme"
   depends_on "atk"
@@ -43,13 +42,9 @@ class Geeqie < Formula
   def install
     ENV.prepend_path "PERL5LIB", Formula["intltool"].libexec/"lib/perl5" unless OS.mac?
 
-    ENV["NOCONFIGURE"] = "yes"
-    system "./autogen.sh" # Seems to struggle to find GTK headers without this
-    system "./configure", *std_configure_args,
-                          "--disable-glibtest",
-                          "--disable-gtktest",
-                          "--enable-gtk3"
-    system "make", "install"
+    system "meson", "build", *std_meson_args
+    system "meson", "compile", "-C", "build"
+    system "meson", "install", "-C", "build"
   end
 
   test do
