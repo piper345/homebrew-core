@@ -29,8 +29,7 @@ class Cheat < Formula
   test do
     assert_match version.to_s, shell_output("#{bin}/cheat --version")
 
-    ENV["EDITOR"] = "test-editor"
     output = shell_output("#{bin}/cheat --init 2>&1")
-    assert_match "editor: test-editor", output
+    assert_match "editor: EDITOR_PATH", output
   end
 end
