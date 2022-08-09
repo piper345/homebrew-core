@@ -19,6 +19,7 @@ class Geeqie < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "5d4a1a0535b8015c07d3a490e454216480af9d68d67e00e16af779d3aeaa9a57"
   end
 
+  depends_on "glib-utils" => :build
   depends_on "intltool" => :build
   depends_on "meson" => :build
   depends_on "pkg-config" => :build
@@ -42,9 +43,9 @@ class Geeqie < Formula
   def install
     ENV.prepend_path "PERL5LIB", Formula["intltool"].libexec/"lib/perl5" unless OS.mac?
 
-    system "meson", "--reconfigure", "build", *std_meson_args
-    system "meson", "compile", "-C", "build"
-    system "meson", "install", "-C", "build"
+    system "meson", "setup", "brewbuild", *std_meson_args
+    system "meson", "compile", "-C", "brewbuild", "--verbose"
+    system "meson", "install", "-C", "brewbuild"
   end
 
   test do
