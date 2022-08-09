@@ -42,7 +42,7 @@ class Geeqie < Formula
   def install
     ENV.prepend_path "PERL5LIB", Formula["intltool"].libexec/"lib/perl5" unless OS.mac?
 
-    system "meson", "build", *std_meson_args
+    system "meson", "--reconfigure", "build", *std_meson_args
     system "meson", "compile", "-C", "build"
     system "meson", "install", "-C", "build"
   end
