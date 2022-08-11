@@ -25,7 +25,7 @@ class Netdata < Formula
   depends_on "json-c"
   depends_on "libuv"
   depends_on "lz4"
-  depends_on "openssl@1.1"
+  depends_on "openssl@3"
   depends_on "protobuf-c"
 
   uses_from_macos "zlib"
