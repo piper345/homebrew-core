@@ -16,6 +16,7 @@ class Gnunet < Formula
   end
 
   depends_on "pkg-config" => :build
+  depends_on "sphinx-doc" => :build
   depends_on "gettext"
   depends_on "gnutls"
   depends_on "jansson"
