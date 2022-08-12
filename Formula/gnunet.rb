@@ -16,7 +16,6 @@ class Gnunet < Formula
   end
 
   depends_on "pkg-config" => :build
-  depends_on "sphinx-doc" => :build
   depends_on "gettext"
   depends_on "gnutls"
   depends_on "jansson"
@@ -32,7 +31,7 @@ class Gnunet < Formula
 
   def install
     ENV.deparallelize if OS.linux?
-    system "./configure", *std_configure_args
+    system "./configure", *std_configure_args, "--disable-documentation"
     system "make", "install"
   end
 
