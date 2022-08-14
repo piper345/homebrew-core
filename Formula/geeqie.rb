@@ -19,7 +19,6 @@ class Geeqie < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "5d4a1a0535b8015c07d3a490e454216480af9d68d67e00e16af779d3aeaa9a57"
   end
 
-  depends_on "glib-utils" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
@@ -37,6 +36,14 @@ class Geeqie < Formula
   depends_on "libx11"
   depends_on "little-cms2"
   depends_on "pango"
+
+  uses_from_macos "vim" => :build # for xxd
+
+  # Fix detection of strverscmp. Remove in the next release
+  patch do
+    url "https://github.com/BestImageViewer/geeqie/commit/87042fa51da7c14a7600bbf8420105dd91675757.patch?full_index=1"
+    sha256 "c80bd1606fae1c772e7890a3f87725b424c4063a9e0b87bcc17fb9b19c0ee80d"
+  end
 
   def install
     system "meson", *std_meson_args, "build"
