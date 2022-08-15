@@ -20,14 +20,8 @@ class Convox < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "1a956c0dc7b0cb701ae30d90f5f55dbb0fa50e8751900b9d39da9648249e710c"
   end
 
-  depends_on "go" => :build
-
-  # Support go 1.17, remove when upstream patch is merged/released
   # https://github.com/convox/convox/pull/389
-  patch do
-    url "https://github.com/convox/convox/commit/d28b01c5797cc8697820c890e469eb715b1d2e2e.patch?full_index=1"
-    sha256 "a0f94053a5549bf676c13cea877a33b3680b6116d54918d1fcfb7f3d2941f58b"
-  end
+  depends_on "go@1.16" => :build
 
   def install
     ldflags = %W[
