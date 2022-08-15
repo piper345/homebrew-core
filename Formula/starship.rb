@@ -15,6 +15,7 @@ class Starship < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "415f8ec29ddc7c7b6c7152ae076bd64a26912d709906e5fdec3ba3285b2ce120"
   end
 
+  depends_on "cmake" => :build
   depends_on "rust" => :build
   depends_on "openssl@1.1"
 
