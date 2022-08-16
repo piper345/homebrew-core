@@ -76,7 +76,7 @@ class Sonarqube < Formula
     begin
       sleep 15
       output = shell_output("#{bin}/sonar status")
-      assert_match(/SonarQube.* is running:.* Wrapper:STARTED, Java:STARTED/, output)
+      assert_match(/SonarQube is running \([0-9]*?\)/, output)
     ensure
       Process.kill 9, pid
       Process.wait pid
