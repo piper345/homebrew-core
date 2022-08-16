@@ -24,6 +24,8 @@ class Sonarqube < Formula
   conflicts_with "sonarqube-lts", because: "both install the same binaries"
 
   def install
+    platform = OS.mac? ? "macosx-universal-64" : "linux-x86-64"
+
     inreplace buildpath/"bin"/platform/"sonar.sh",
       %r{^PIDFILE="\./\$APP_NAME\.pid"$},
       "PIDFILE=#{var}/run/\$APP_NAME.pid"
@@ -36,7 +38,6 @@ class Sonarqube < Formula
     end
 
     libexec.install Dir["*"]
-    platform = OS.mac? ? "macosx-universal-64" : "linux-x86-64"
     env = Language::Java.overridable_java_home_env("11")
     env["PATH"] = "$JAVA_HOME/bin:$PATH"
     (bin/"sonar").write_env_script libexec/"bin"/platform/"sonar.sh", env
