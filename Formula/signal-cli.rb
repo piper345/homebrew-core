@@ -25,6 +25,7 @@ class SignalCli < Formula
 
   depends_on "openjdk"
 
+  uses_from_macos "llvm" => :build # For `libclang`, used by `boring-sys` crate
   uses_from_macos "zip" => :build
 
   # per https://github.com/AsamK/signal-cli/wiki/Provide-native-lib-for-libsignal#libsignal-client
