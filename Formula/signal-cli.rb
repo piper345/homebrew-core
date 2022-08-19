@@ -14,6 +14,7 @@ class SignalCli < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d4ccbf8835f16a1c8ee8d4f60d9cfb7a22383c6507b824f0e3dbb7768d568255"
   end
 
+  depends_on "cmake" => :build # For `boring-sys` crate in `libsignal-client`
   depends_on "gradle" => :build
   depends_on "protobuf" => :build
   # the libsignal-client build targets a specific rustc listed in the file
