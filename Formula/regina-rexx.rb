@@ -13,7 +13,7 @@ class ReginaRexx < Formula
     sha256 catalina:       "2b98c5ca16915c08e04828749e7f75644d7b7e1121a64ec78411ef9e9603c294"
     sha256 x86_64_linux:   "7b44626961634ed07b0c215d78c345dcc1c97d0a36c9ea3a530aa78ca61b9d8b"
   end
-  
+
   uses_from_macos "libxcrypt"
 
   def install
