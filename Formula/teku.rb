@@ -26,7 +26,7 @@ class Teku < Formula
 
     rest_port = free_port
     fork do
-      exec bin/"teku", "--rest-api-enabled", "--rest-api-port=#{rest_port}", "--p2p-enabled=false"
+      exec bin/"teku", "--rest-api-enabled", "--rest-api-port=#{rest_port}", "--p2p-enabled=false", "--ee-endpoint=http://127.0.0.1"
     end
     sleep 15
 
