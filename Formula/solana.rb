@@ -1,8 +1,8 @@
 class Solana < Formula
   desc "Web-Scale Blockchain for decentralized apps and marketplaces"
   homepage "https://solana.com"
-  url "https://github.com/solana-labs/solana/archive/v1.10.35.tar.gz"
-  sha256 "416e81d24491ea89b25590f1c2dbd735110dc28872c3330f0bd04a2e40fd64c0"
+  url "https://github.com/solana-labs/solana/archive/v1.10.37.tar.gz"
+  sha256 "b6a5bb4d5ed09775c098e9d7b911c71f487bf20e82b0248fcff585b495cd20e8"
   license "Apache-2.0"
 
   # This formula tracks the stable channel but the "latest" release on GitHub
