@@ -26,7 +26,7 @@ class Glooctl < Formula
   depends_on "go" => :build
 
   def install
-    system "make", "glooctl", "TAGGED_VERSION=v#{version}"
+    system "make", "glooctl", "VERSION=v#{version}"
     bin.install "_output/glooctl"
   end
 
@@ -35,7 +35,7 @@ class Glooctl < Formula
     assert_match "glooctl is the unified CLI for Gloo.", run_output
 
     version_output = shell_output("#{bin}/glooctl version 2>&1")
-    assert_match "Client: {\"version\":\"#{version}\"}", version_output
+    assert_match "Client: {\"version\":\"v#{version}\"}", version_output
 
     version_output = shell_output("#{bin}/glooctl version 2>&1")
     assert_match "Server: version undefined", version_output
