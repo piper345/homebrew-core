@@ -2,8 +2,8 @@ class Needle < Formula
   desc "Compile-time safe Swift dependency injection framework with real code"
   homepage "https://github.com/uber/needle"
   url "https://github.com/uber/needle.git",
-      tag:      "v0.17.2",
-      revision: "6a2d5e25cd3c77ddfa57835e991469db791c4744"
+      tag:      "v0.19.0",
+      revision: "9d15211866bd307c7bfef789fe77ce1e97aeb978"
   license "Apache-2.0"
 
   bottle do
