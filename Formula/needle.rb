@@ -13,7 +13,7 @@ class Needle < Formula
     sha256 cellar: :any, catalina:      "f45fa77b9e00be408206fc2cf945f41ca3f4661bbb06c8d2aadd015f4d75dfdd"
   end
 
-  depends_on xcode: ["12.2", :build]
+  depends_on xcode: ["13.0", :build] # Swift 5.5+
   depends_on :macos
 
   def install
