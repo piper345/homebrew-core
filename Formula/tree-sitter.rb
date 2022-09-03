@@ -21,13 +21,6 @@ class TreeSitter < Formula
   depends_on "node" => [:build, :test]
   depends_on "rust" => :build
 
-  # fix build with emscripten 3.1.11
-  # remove in next release
-  patch do
-    url "https://github.com/chenrui333/tree-sitter/commit/9e9462538f2fa30fb8c7a3386c1cb2a8ded3d0eb.patch?full_index=1"
-    sha256 "ce6e2305da20848aa20399c36a170f03ec0a0a7624f695b158403babbe15ee30"
-  end
-
   def install
     system "make", "AMALGAMATED=1"
     system "make", "install", "PREFIX=#{prefix}"
