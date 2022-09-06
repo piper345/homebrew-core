@@ -6,8 +6,8 @@ class Julia < Formula
 
   stable do
     # Use the `-full` tarball to avoid having to download during the build.
-    url "https://github.com/JuliaLang/julia/releases/download/v1.8.0/julia-1.8.0-full.tar.gz"
-    sha256 "fe278b2e8d59bb60abfd64cfad4074e23ee0353c26615423d70a5085de4124e1"
+    url "https://github.com/JuliaLang/julia/releases/download/v1.8.1/julia-1.8.1-full.tar.gz"
+    sha256 "31e4655f4b377e73d6f583c539d0221ed7b480a3ea091833d0005316185c5b61"
 
     # Fix compatibility with LibGit2 1.4.0+
     patch do
