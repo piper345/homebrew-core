@@ -23,18 +23,18 @@ class V2ray < Formula
   depends_on "go" => :build
 
   resource "geoip" do
-    url "https://github.com/v2fly/geoip/releases/download/202204280105/geoip.dat"
-    sha256 "38fe72a33f23920cf14e804bf14c26ea0210db3ea2108a2d51fa32c48ac53170"
+    url "https://github.com/v2fly/geoip/releases/download/202209010055/geoip.dat"
+    sha256 "94c6f6935aa3fa81ec7d8fd7bcab8832a50216c78537a83fc2bd7c051374ba88"
   end
 
   resource "geoip-only-cn-private" do
-    url "https://github.com/v2fly/geoip/releases/download/202204280105/geoip-only-cn-private.dat"
-    sha256 "e8d0d7469b90e718f3b5cba033fec902dd05fab44c28c779a443e4c1f8aa0bf2"
+    url "https://github.com/v2fly/geoip/releases/download/202209010055/geoip-only-cn-private.dat"
+    sha256 "529afb06295f3d1dcd3fa9a0d4ef5c07074ac2c3a8834edddc3a0ad22071bae1"
   end
 
   resource "geosite" do
-    url "https://github.com/v2fly/domain-list-community/releases/download/20220501162639/dlc.dat"
-    sha256 "dff924231ec74dd51d28177e57bc4fd918f212d993a6c1264f335e966ceb5aa9"
+    url "https://github.com/v2fly/domain-list-community/releases/download/20220904120706/dlc.dat"
+    sha256 "0484768bb454a860bd06e059adaf2167f2da68bcf767b991f13bf6670287f227"
   end
 
   def install
