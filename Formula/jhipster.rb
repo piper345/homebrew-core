@@ -26,6 +26,17 @@ class Jhipster < Formula
   end
 
   test do
+    (testpath/".yo-rc.json").write <<~EOS
+      {
+        "generator-jhipster": {
+          "baseName": "jhipster",
+          "jhipsterVersion": "7.9.3",
+          "prettierDefaultIndent": 2,
+          "projectName": "Jhipster Application"
+        }
+      }
+    EOS
+
     assert_match "execution is complete", shell_output("#{bin}/jhipster info")
   end
 end
