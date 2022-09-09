@@ -1,9 +1,10 @@
 class Hledger < Formula
   desc "Easy plain text accounting with command-line, terminal and web UIs"
   homepage "https://hledger.org/"
-  url "https://hackage.haskell.org/package/hledger-1.27/hledger-1.27.tar.gz"
-  sha256 "f872a141918501cc8b36d9b4ab3299c009caefd91adc9152b831b52c94e4e46c"
+  url "https://github.com/simonmichael/hledger/archive/refs/tags/1.27.tar.gz"
+  sha256 "1a3d1d321cf5fb9ae6d214a5a4a71775680a8146cf43f77e523a2e6c0af9d366"
   license "GPL-3.0-or-later"
+  head "https://github.com/simonmichael/hledger.git", branch: "master"
 
   # A new version is sometimes present on Hackage before it's officially
   # released on the upstream homepage, so we check the first-party download
@@ -28,48 +29,17 @@ class Hledger < Formula
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
-  resource "hledger-lib" do
-    url "https://hackage.haskell.org/package/hledger-lib-1.27/hledger-lib-1.27.tar.gz"
-    sha256 "d7d72d021a89c618aa6e91d15e45954db08746c3b7454a5be05a6efa2e6ca250"
-  end
-
-  resource "hledger-ui" do
-    url "https://hackage.haskell.org/package/hledger-ui-1.27/hledger-ui-1.27.tar.gz"
-    sha256 "41b63e69fb8a5524b41907b9fd677e1fa6a8f74789c4adc12f780d3cd9fff319"
-  end
-
-  resource "hledger-web" do
-    url "https://hackage.haskell.org/package/hledger-web-1.27/hledger-web-1.27.tar.gz"
-    sha256 "84ef49007be19ad0077951be6b1bbf6a2836520fa80b4ede256fa00efb6d9d48"
-  end
-
   def install
-    (buildpath/"../hledger-lib").install resource("hledger-lib")
-    (buildpath/"../hledger-ui").install resource("hledger-ui")
-    (buildpath/"../hledger-web").install resource("hledger-web")
-    cd ".." do
-      system "stack", "update"
-      (buildpath/"../stack.yaml").write <<~EOS
-        resolver: lts-17.5
-        compiler: ghc-#{Formula["ghc"].version}
-        compiler-check: newer-minor
-        packages:
-        - hledger-#{version}
-        - hledger-lib
-        - hledger-ui
-        - hledger-web
-      EOS
-      system "stack", "install", "--system-ghc", "--no-install-ghc", "--skip-ghc-check", "--local-bin-path=#{bin}"
-
-      man1.install Dir["hledger-*/*.1"]
-      man5.install Dir["hledger-lib/*.5"]
-      info.install Dir["hledger-*/*.info"]
-    end
+    system "stack", "update"
+    system "stack", "install", "--system-ghc", "--no-install-ghc", "--skip-ghc-check", "--local-bin-path=#{bin}"
+    man1.install Dir["hledger*/*.1"]
+    info.install Dir["hledger*/*.info"]
+    bash_completion.install "hledger/shell-completion/hledger-completion.bash" => "hledger"
   end
 
   test do
-    system "#{bin}/hledger", "test"
-    system "#{bin}/hledger-ui", "--version"
-    system "#{bin}/hledger-web", "--test"
+    system bin/"hledger", "test"
+    system bin/"hledger-ui", "--version"
+    system bin/"hledger-web", "--test"
   end
 end
