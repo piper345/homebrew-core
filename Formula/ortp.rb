@@ -38,10 +38,12 @@ class Ortp < Formula
 
     ENV.prepend_path "PKG_CONFIG_PATH", libexec/"lib/pkgconfig"
     ENV.append "LDFLAGS", "-Wl,-rpath,#{libexec}/lib" if OS.linux?
+    cflags = ["-I#{libexec}/include"]
+    cflags << "-Wno-error=maybe-uninitialized" if OS.linux?
 
     args = %W[
       -DCMAKE_PREFIX_PATH=#{libexec}
-      -DCMAKE_C_FLAGS=-I#{libexec}/include
+      -DCMAKE_C_FLAGS=#{cflags.join(" ")}
       -DCMAKE_CXX_FLAGS=-I#{libexec}/include
       -DENABLE_DOC=NO
     ]
