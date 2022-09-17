@@ -77,6 +77,13 @@ class Imapsync < Formula
     end
   end
 
+  resource "Module::Build" do
+    on_system :linux, macos: :catalina_or_older do
+      url "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4231.tar.gz"
+      sha256 "7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717"
+    end
+  end
+
   resource "Encode::IMAPUTF7" do
     url "https://cpan.metacpan.org/authors/id/P/PM/PMAKHOLM/Encode-IMAPUTF7-1.05.tar.gz"
     sha256 "470305ddc37483cfe8d3c16d13770a28011f600bf557acb8c3e07739997c37e1"
@@ -113,20 +120,13 @@ class Imapsync < Formula
   end
 
   resource "JSON" do
-    url "https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/JSON-4.03.tar.gz"
-    sha256 "e41f8761a5e7b9b27af26fe5780d44550d7a6a66bf3078e337d676d07a699941"
+    url "https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/JSON-4.09.tar.gz"
+    sha256 "6780a51f438c0932eec0534fc9cd2b1ad0d64817eda4add8ede5ec77d6d2c991"
   end
 
   resource "Test::MockObject" do
     url "https://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Test-MockObject-1.20200122.tar.gz"
     sha256 "2b7f80da87f5a6fe0360d9ee521051053017442c3a26e85db68dfac9f8307623"
-  end
-
-  resource "Module::Build" do
-    on_system :linux, macos: :catalina_or_older do
-      url "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4231.tar.gz"
-      sha256 "7e0f4c692c1740c1ac84ea14d7ea3d8bc798b2fb26c09877229e04f430b2b717"
-    end
   end
 
   resource "JSON::WebToken" do
