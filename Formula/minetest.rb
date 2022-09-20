@@ -4,8 +4,8 @@ class Minetest < Formula
   license "LGPL-2.1-or-later"
 
   stable do
-    url "https://github.com/minetest/minetest/archive/5.6.0.tar.gz"
-    sha256 "3fdbc0c8d9f6a18c12954ba0caedb548a22f367520f59d079804a21de0347a91"
+    url "https://github.com/minetest/minetest/archive/5.6.1.tar.gz"
+    sha256 "1440603e19dca70e2691e86a74c822ee2c4a36fceee32b2d85ae74772149e9a3"
 
     resource "irrlichtmt" do
       url "https://github.com/minetest/irrlicht/archive/1.9.0mt7.tar.gz"
