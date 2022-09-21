@@ -4,12 +4,11 @@ class Mesa < Formula
   desc "Graphics Library"
   homepage "https://www.mesa3d.org/"
   license "MIT"
-  revision 2
   head "https://gitlab.freedesktop.org/mesa/mesa.git", branch: "main"
 
   stable do
-    url "https://mesa.freedesktop.org/archive/mesa-22.1.7.tar.xz"
-    sha256 "da838eb2cf11d0e08d0e9944f6bd4d96987fdc59ea2856f8c70a31a82b355d89"
+    url "https://mesa.freedesktop.org/archive/mesa-22.2.0.tar.xz"
+    sha256 "b1f9c8fd08f2cae3adf83355bef4d2398e8025f44947332880f2d0066bdafa8c"
 
     patch do
       url "https://raw.githubusercontent.com/Homebrew/formula-patches/f0a40cf7d70ee5a25639b91d9a8088749a2dd04e/mesa/fix-build-on-macOS.patch"
