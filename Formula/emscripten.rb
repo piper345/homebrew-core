@@ -3,8 +3,6 @@ require "language/node"
 class Emscripten < Formula
   desc "LLVM bytecode to JavaScript compiler"
   homepage "https://emscripten.org/"
-  # TODO: Remove from versioned dependency conflict allowlist when `python`
-  #       symlink is migrated to `python@3.10`.
   url "https://github.com/emscripten-core/emscripten/archive/3.1.23.tar.gz"
   sha256 "f590deb9bb0a34efaa3c4a5621795c4673ba8f953ed363e80d1701aa835f812b"
   license all_of: [
