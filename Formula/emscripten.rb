@@ -49,13 +49,15 @@ class Emscripten < Formula
   fails_with gcc: "5"
 
   # Use emscripten's recommended binaryen revision to avoid build failures.
+  # https://github.com/emscripten-core/emscripten/issues/12252
   # See llvm resource below for instructions on how to update this.
   resource "binaryen" do
     url "https://github.com/WebAssembly/binaryen.git",
-        revision: "989489020e635d35870b22894a5d129c8c55d640"
+        revision: "58bedde3ac54f82657d5de092e7142ffb2ff735c"
   end
 
-  # emscripten needs argument '-fignore-exceptions', which is only available in llvm >= 12
+  # emscripten does not support using the stable version of LLVM.
+  # https://github.com/emscripten-core/emscripten/issues/11362
   # To find the correct llvm revision, find a corresponding commit at:
   # https://github.com/emscripten-core/emsdk/blob/main/emscripten-releases-tags.json
   # Then take this commit and go to:
@@ -63,7 +65,7 @@ class Emscripten < Formula
   # Then use the listed llvm_project_revision for the resource below.
   resource "llvm" do
     url "https://github.com/llvm/llvm-project.git",
-        revision: "8491d01cc385d08b8b4f5dd097239ea0009ddc63"
+        revision: "8b587113b746f31b63fd6473083df78cef30a72e"
   end
 
   def install
@@ -99,25 +101,25 @@ class Emscripten < Formula
       # Apple's libstdc++ is too old to build LLVM
       ENV.libcxx if ENV.compiler == :clang
 
-      # compiler-rt has some iOS simulator features that require i386 symbols
-      # I'm assuming the rest of clang needs support too for 32-bit compilation
-      # to work correctly, but if not, perhaps universal binaries could be
-      # limited to compiler-rt. llvm makes this somewhat easier because compiler-rt
-      # can almost be treated as an entirely different build from llvm.
-      ENV.permit_arch_flags
-
       args = %W[
         -DLLVM_ENABLE_PROJECTS=#{projects.join(";")}
         -DLLVM_TARGETS_TO_BUILD=#{targets.join(";")}
-        -DLLVM_LINK_LLVM_DYLIB=ON
-        -DLLVM_BUILD_LLVM_DYLIB=ON
         -DLLVM_INCLUDE_EXAMPLES=OFF
         -DLLVM_INCLUDE_TESTS=OFF
         -DLLVM_INSTALL_UTILS=OFF
+        -DLLVM_ENABLE_ZSTD=OFF
+        -DLLVM_ENABLE_Z3_SOLVER=OFF
       ]
 
       sdk = MacOS.sdk_path_if_needed
       args << "-DDEFAULT_SYSROOT=#{sdk}" if sdk
+
+      if OS.linux?
+        args += %w[
+          -DLLVM_ENABLE_LIBXML2=OFF
+          -DLLVM_ENABLE_LIBEDIT=OFF
+        ]
+      end
 
       system "cmake", "-S", "llvm", "-B", "build",
                       "-G", "Unix Makefiles",
