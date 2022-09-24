@@ -73,11 +73,7 @@ class Emscripten < Formula
     # Prefer executables without `.py` extensions, but include those with `.py`
     # extensions if there isn't a matching executable without the `.py` extension.
     emscripts = buildpath.children.select do |pn|
-      next false unless pn.file?
-      next false unless pn.executable?
-      next false if pn.extname == ".py" && pn.basename(".py").exist?
-
-      true
+      pn.file? && pn.executable? && !(pn.extname == ".py" && pn.basename(".py").exist?)
     end.map(&:basename)
 
     # All files from the repository are required as emscripten is a collection
@@ -181,13 +177,28 @@ class Emscripten < Formula
   end
 
   def post_install
+    return if File.exist?("#{Dir.home}/.emscripten")
     return if (libexec/".emscripten").exist?
 
     system bin/"emcc", "--generate-config"
     inreplace libexec/".emscripten" do |s|
-      s.gsub!(/^(LLVM_ROOT.*)/, "#\\1\nLLVM_ROOT = \"#{libexec}/llvm/bin\"\\2")
-      s.gsub!(/^(BINARYEN_ROOT.*)/, "#\\1\nBINARYEN_ROOT = \"#{libexec}/binaryen\"\\2")
+      s.change_make_var! "LLVM_ROOT", "'#{libexec}/llvm/bin'"
+      s.change_make_var! "BINARYEN_ROOT", "'#{libexec}/binaryen'"
+      s.change_make_var! "NODE_JS", "'#{Formula["node"].opt_bin}/node'"
+      s.change_make_var! "JAVA", "'#{Formula["openjdk"].opt_bin}/java'"
     end
+  end
+
+  def caveats
+    return unless File.exist?("#{Dir.home}/.emscripten")
+    return if (libexec/".emscripten").exist?
+
+    <<~EOS
+      You have a ~/.emscripten configuration file, so the default configuration
+      file was not generated. To generate the default configuration:
+        rm ~/.emscripten
+        brew postinstall emscripten
+    EOS
   end
 
   test do
