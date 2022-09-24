@@ -101,31 +101,56 @@ class Emscripten < Formula
       # Apple's libstdc++ is too old to build LLVM
       ENV.libcxx if ENV.compiler == :clang
 
+      # See upstream configuration in `src/build.py` at
+      # https://chromium.googlesource.com/emscripten-releases/
       args = %W[
-        -DLLVM_ENABLE_PROJECTS=#{projects.join(";")}
-        -DLLVM_TARGETS_TO_BUILD=#{targets.join(";")}
+        -DLLVM_ENABLE_LIBXML2=OFF
         -DLLVM_INCLUDE_EXAMPLES=OFF
+        -DLLVM_LINK_LLVM_DYLIB=OFF
+        -DLLVM_BUILD_LLVM_DYLIB=OFF
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+        -DLLVM_ENABLE_BINDINGS=OFF
+        -DLLVM_TOOL_LTO_BUILD=OFF
+        -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON
+        -DLLVM_TARGETS_TO_BUILD=#{targets.join(";")}
+        -DLLVM_ENABLE_PROJECTS=#{projects.join(";")}
+        -DLLVM_ENABLE_TERMINFO=#{!OS.linux?}
+        -DCLANG_ENABLE_ARCMT=OFF
+        -DCLANG_ENABLE_STATIC_ANALYZER=OFF
         -DLLVM_INCLUDE_TESTS=OFF
         -DLLVM_INSTALL_UTILS=OFF
         -DLLVM_ENABLE_ZSTD=OFF
         -DLLVM_ENABLE_Z3_SOLVER=OFF
       ]
-
-      sdk = MacOS.sdk_path_if_needed
-      args << "-DDEFAULT_SYSROOT=#{sdk}" if sdk
-
-      if OS.linux?
-        args += %w[
-          -DLLVM_ENABLE_LIBXML2=OFF
-          -DLLVM_ENABLE_LIBEDIT=OFF
-        ]
-      end
+      args << "-DLLVM_ENABLE_LIBEDIT=OFF" if OS.linux?
 
       system "cmake", "-S", "llvm", "-B", "build",
                       "-G", "Unix Makefiles",
                       *args, *std_cmake_args(install_prefix: libexec/"llvm")
       system "cmake", "--build", "build"
       system "cmake", "--build", "build", "--target", "install"
+
+      # Remove unneeded tools. Taken from upstream `src/build.py`.
+      unneeded = %w[
+        check cl cpp extef-mapping format func-mapping import-test offload-bundler refactor rename scan-deps
+      ].map { |suffix| "clang-#{suffix}" }
+      unneeded += %w[lld-link ld.lld ld64.lld llvm-lib ld64.lld.darwinnew ld64.lld.darwinold]
+      (libexec/"llvm/bin").glob("{#{unneeded.join(",")}}").map(&:unlink)
+      (libexec/"llvm/lib").glob("libclang.{dylib,so.*}").map(&:unlink)
+
+      # Include needed tools omitted by `LLVM_INSTALL_TOOLCHAIN_ONLY`.
+      # Taken from upstream `src/build.py`.
+      extra_tools = %w[FileCheck llc llvm-as llvm-dis llvm-link llvm-mc
+                       llvm-nm llvm-objdump llvm-readobj llvm-size opt
+                       llvm-dwarfdump llvm-dwp]
+      (libexec/"llvm/bin").install extra_tools.map { |tool| "build/bin/#{tool}" }
+
+      %w[clang clang++].each do |compiler|
+        (libexec/"llvm/bin").install_symlink compiler => "wasm32-#{compiler}"
+        (libexec/"llvm/bin").install_symlink compiler => "wasm32-wasi-#{compiler}"
+        bin.install_symlink libexec/"llvm/bin/wasm32-#{compiler}"
+        bin.install_symlink libexec/"llvm/bin/wasm32-wasi-#{compiler}"
+      end
     end
 
     resource("binaryen").stage do
