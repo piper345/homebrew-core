@@ -57,9 +57,11 @@ class Ocp < Formula
     # Required for SDL2
     resource("unifont").stage do |r|
       cd "font/precompiled" do
-        share.install "unifont-#{r.version}.ttf" => "unifont.ttf"
-        share.install "unifont_csur-#{r.version}.ttf" => "unifont_csur.ttf"
-        share.install "unifont_upper-#{r.version}.ttf" => "unifont_upper.ttf"
+        { truetype: "ttf", opentype: "otf" }.each do |subdir, ext|
+          (share/"fonts"/subdir.to_s/"unifont").install "unifont-#{r.version}.#{ext}" => "unifont.#{ext}"
+          (share/"fonts"/subdir.to_s/"unifont").install "unifont_csur-#{r.version}.#{ext}" => "unifont_csur.#{ext}"
+          (share/"fonts"/subdir.to_s/"unifont").install "unifont_upper-#{r.version}.#{ext}" => "unifont_upper.#{ext}"
+        end
       end
     end
 
