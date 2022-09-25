@@ -79,6 +79,9 @@ class Emscripten < Formula
     # repository.
     libexec.install buildpath.children
 
+    # Remove unneded files. See `tools/install.py`.
+    (libexec/"test/third_party").rmtree
+
     # emscripten needs an llvm build with the following executables:
     # https://github.com/emscripten-core/emscripten/blob/#{version}/docs/packaging.md#dependencies
     resource("llvm").stage do
@@ -200,8 +203,8 @@ class Emscripten < Formula
   end
 
   test do
-    # Fixes "Unsupported architecture" Xcode prepocessor error
-    ENV.delete "CPATH"
+    # We're targetting WASM, so we don't want to use the macOS SDK here.
+    ENV.remove_macosxsdk if OS.mac?
 
     ENV["NODE_OPTIONS"] = "--no-experimental-fetch"
 
