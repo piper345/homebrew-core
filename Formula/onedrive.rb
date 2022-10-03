@@ -34,7 +34,7 @@ class Onedrive < Formula
 
   test do
     assert_match <<~EOS, pipe_output("#{bin}/onedrive 2>&1", "")
-      Enter the response uri: Invalid uri
+      the response uri: Invalid uri
       Could not initialize the OneDrive API
     EOS
   end
