@@ -39,6 +39,7 @@ class Eksctl < Formula
                                                           buildpath/"ifacemaker"
 
     ENV["GOBIN"] = HOMEBREW_PREFIX/"bin"
+    ENV.deparallelize # Makefile prerequisites need to be run in order
     system "make", "build"
     bin.install "eksctl"
 
