@@ -16,8 +16,8 @@ class Istioctl < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "47be9623e692cec34eca7a781611efc551970062d38d5706b476ce997cda7850"
   end
 
-  depends_on "go-bindata" => :build
   depends_on "go" => :build
+  depends_on "go-bindata" => :build
 
   uses_from_macos "curl" => :build
 
