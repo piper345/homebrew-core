@@ -15,6 +15,7 @@ class Teleport < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
+
   bottle do
     sha256 cellar: :any,                 arm64_monterey: "b9464d2d0014b41691c38591c20436c066a63f7bc59f9b682b03cae4e7736e13"
     sha256 cellar: :any,                 arm64_big_sur:  "ee0b44f52867c0b1cd604ba9aeff75371b88a202aa23e22eb961651ef7473ee8"
