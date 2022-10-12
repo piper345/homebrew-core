@@ -17,9 +17,7 @@ class Istioctl < Formula
   end
 
   depends_on "go-bindata" => :build
-  # Required lucas-clemente/quic-go >= 0.28
-  # Try to switch to the latest go on the next release
-  depends_on "go@1.18" => :build
+  depends_on "go" => :build
 
   uses_from_macos "curl" => :build
 
