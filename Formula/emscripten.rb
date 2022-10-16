@@ -3,8 +3,8 @@ require "language/node"
 class Emscripten < Formula
   desc "LLVM bytecode to JavaScript compiler"
   homepage "https://emscripten.org/"
-  url "https://github.com/emscripten-core/emscripten/archive/3.1.23.tar.gz"
-  sha256 "f590deb9bb0a34efaa3c4a5621795c4673ba8f953ed363e80d1701aa835f812b"
+  url "https://github.com/emscripten-core/emscripten/archive/3.1.24.tar.gz"
+  sha256 "1e6d6ac12385dfc4fe006c3975125f45521cbc8c0828032e5089022f5977953e"
   license all_of: [
     "Apache-2.0", # binaryen
     "Apache-2.0" => { with: "LLVM-exception" }, # llvm
