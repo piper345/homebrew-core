@@ -29,6 +29,7 @@ class LeanCli < Formula
 
   test do
     assert_match "lean version #{version}", shell_output("#{bin}/lean --version")
-    assert_match "[ERROR] User doesn't sign in.", shell_output("#{bin}/lean login --region us-w1 --token foobar 2>&1", 1)
+    output = shell_output("#{bin}/lean login --region us-w1 --token foobar 2>&1", 1)
+    assert_match "[ERROR] User doesn't sign in.", output
   end
 end
