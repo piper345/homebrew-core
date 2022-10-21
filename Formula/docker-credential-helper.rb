@@ -26,12 +26,12 @@ class DockerCredentialHelper < Formula
   def install
     if OS.mac?
       system "make", "osxkeychain"
-      bin.install "bin/docker-credential-osxkeychain"
+      bin.install "bin/build/docker-credential-osxkeychain"
     else
       system "make", "pass"
       system "make", "secretservice"
-      bin.install "bin/docker-credential-pass"
-      bin.install "bin/docker-credential-secretservice"
+      bin.install "bin/build/docker-credential-pass"
+      bin.install "bin/build/docker-credential-secretservice"
     end
   end
 
