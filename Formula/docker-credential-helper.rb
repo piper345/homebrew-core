@@ -17,6 +17,7 @@ class DockerCredentialHelper < Formula
   end
 
   depends_on "go" => :build
+  
   on_linux do
     depends_on "pkg-config" => :build
     depends_on "libsecret"
@@ -24,11 +25,9 @@ class DockerCredentialHelper < Formula
 
   def install
     if OS.mac?
-      system "make", "vet_osx"
       system "make", "osxkeychain"
       bin.install "bin/docker-credential-osxkeychain"
     else
-      system "make", "vet_linux"
       system "make", "pass"
       system "make", "secretservice"
       bin.install "bin/docker-credential-pass"
