@@ -8,8 +8,8 @@ class Envoy < Formula
 
   stable do
     url "https://github.com/envoyproxy/envoy.git",
-        tag:      "v1.23.1",
-        revision: "edd69583372955fdfa0b8ca3820dd7312c094e46"
+        tag:      "v1.24.0",
+        revision: "15baf56003f33a07e0ab44f82f75a660040db438"
 
     # Fix build failure on macOS 10.15 due to error at
     # source/extensions/filters/http/file_system_buffer/filter.cc:402:53:
