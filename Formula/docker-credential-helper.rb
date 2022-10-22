@@ -40,8 +40,6 @@ class DockerCredentialHelper < Formula
       run_output = shell_output("#{bin}/docker-credential-osxkeychain", 1)
       assert_match %r{^Usage: .*/docker-credential-osxkeychain.*}, run_output
     else
-      ENV["DISPLAY"] = ""
-
       run_output = shell_output("#{bin}/docker-credential-pass list")
       assert_match "{}", run_output
 
