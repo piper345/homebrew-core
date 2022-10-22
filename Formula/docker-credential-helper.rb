@@ -40,11 +40,13 @@ class DockerCredentialHelper < Formula
       run_output = shell_output("#{bin}/docker-credential-osxkeychain", 1)
       assert_match %r{^Usage: .*/docker-credential-osxkeychain.*}, run_output
     else
+      ENV["DISPLAY"] = ""
+
       run_output = shell_output("#{bin}/docker-credential-pass list")
       assert_match "{}", run_output
 
       run_output = shell_output("#{bin}/docker-credential-secretservice list", 1)
-      assert_match "Error from list function in secretservice_linux.c", run_output
+      assert_match "Cannot autolaunch D-Bus without X11", run_output
     end
   end
 end
