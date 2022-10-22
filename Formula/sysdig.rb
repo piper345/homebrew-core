@@ -10,8 +10,8 @@ class Sysdig < Formula
     # Update to value of FALCOSECURITY_LIBS_VERSION found in
     # https://github.com/draios/sysdig/blob/#{version}/cmake/modules/falcosecurity-libs.cmake
     resource "falcosecurity-libs" do
-      url "https://github.com/falcosecurity/libs/archive/e5c53d648f3c4694385bbe488e7d47eaa36c229a.tar.gz"
-      sha256 "80903bc57b7f9c5f24298ecf1531cf66ef571681b4bd1e05f6e4db704ffb380b"
+      url "https://github.com/falcosecurity/libs/archive/4e218b3a072f2e0377804ed317e09de99445589f.tar.gz"
+      sha256 "29c52303744d40847292f00d4ce7cd1e97f97a81aa5d38674949cf38118d4315"
     end
   end
 
