@@ -22,7 +22,6 @@ class Rubberband < Formula
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "openjdk" => :build
   depends_on "pkg-config" => :build
   depends_on "libsamplerate"
   depends_on "libsndfile"
