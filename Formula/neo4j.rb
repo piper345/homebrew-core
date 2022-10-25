@@ -15,11 +15,11 @@ class Neo4j < Formula
     sha256 cellar: :any_skip_relocation, all: "6f9fc6b1d46b1a2b6fd19988620c2aa1f869eb0b7e36bafe66890f4e0c506a15"
   end
 
-  depends_on "openjdk@11"
+  depends_on "openjdk"
 
   def install
     env = {
-      JAVA_HOME:  Formula["openjdk@11"].opt_prefix,
+      JAVA_HOME:  Formula["openjdk"].opt_prefix,
       NEO4J_HOME: libexec,
     }
     # Remove windows files
