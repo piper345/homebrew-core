@@ -51,9 +51,9 @@ class Vitess < Formula
     sleep 1
 
     fork do
-      exec bin/"vtctl", "-topo_implementation", "etcd2",
-                        "-topo_global_server_address", etcd_server,
-                        "-topo_global_root", testpath/"global",
+      exec bin/"vtctl", "--topo_implementation", "etcd2",
+                        "--topo_global_server_address", etcd_server,
+                        "--topo_global_root", testpath/"global",
                         "VtctldCommand", "AddCellInfo",
                         "--root", testpath/cell,
                         "--server-address", etcd_server,
@@ -63,13 +63,13 @@ class Vitess < Formula
 
     port = free_port
     fork do
-      exec bin/"vtgate", "-topo_implementation", "etcd2",
-                         "-topo_global_server_address", etcd_server,
-                         "-topo_global_root", testpath/"global",
-                         "-tablet_types_to_wait", "PRIMARY,REPLICA",
-                         "-cell", cell,
-                         "-cells_to_watch", cell,
-                         "-port", port.to_s
+      exec bin/"vtgate", "--topo_implementation", "etcd2",
+                         "--topo_global_server_address", etcd_server,
+                         "--topo_global_root", testpath/"global",
+                         "--tablet_types_to_wait", "PRIMARY,REPLICA",
+                         "--cell", cell,
+                         "--cells_to_watch", cell,
+                         "--port", port.to_s
     end
     sleep 3
 
