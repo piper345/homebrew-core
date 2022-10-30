@@ -18,6 +18,12 @@ class Topgrade < Formula
   depends_on "rust" => :build
   depends_on xcode: :build if MacOS::CLT.version >= "11.4" # libxml2 module bug
 
+  # patch version, remove in next release
+  patch do
+    url "https://github.com/topgrade-rs/topgrade/commit/573bae7511c2ef84068b03f099364e90488d319c.patch?full_index=1"
+    sha256 "d40303ae61159d4fd3e51803c90ebf9c7dd1fc509e25c19c13c94720d7f3ce98"
+  end
+
   def install
     system "cargo", "install", *std_cargo_args
   end
