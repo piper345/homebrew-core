@@ -1,8 +1,8 @@
 class Sundials < Formula
   desc "Nonlinear and differential/algebraic equations solver"
   homepage "https://computing.llnl.gov/projects/sundials"
-  url "https://github.com/LLNL/sundials/releases/download/v6.3.0/sundials-6.3.0.tar.gz"
-  sha256 "89a22bea820ff250aa7239f634ab07fa34efe1d2dcfde29cc8d3af11455ba2a7"
+  url "https://github.com/LLNL/sundials/releases/download/v6.4.1/sundials-6.4.1.tar.gz"
+  sha256 "7bf10a8d2920591af3fba2db92548e91ad60eb7241ab23350a9b1bc51e05e8d0"
   license "BSD-3-Clause"
 
   livecheck do
