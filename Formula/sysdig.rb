@@ -69,17 +69,9 @@ class Sysdig < Formula
   def install
     (buildpath/"falcosecurity-libs").install resource("falcosecurity-libs")
 
-    # FIXME: Workaround Apple ARM loader error due to packing.
-    # ld: warning: pointer not aligned at address 0x10017E21D
-    #   (_g_event_info + 527453 from ../../libscap/libscap.a(event_table.c.o))
-    # ld: unaligned pointer(s) for architecture arm64
-    inreplace "falcosecurity-libs/driver/ppm_events_public.h", " __attribute__((packed))", "" if Hardware::CPU.arm?
-
     # These flags are not needed for LuaJIT 2.1 (Ref: https://luajit.org/install.html).
     # On Apple ARM, the flags results in broken binaries and need to be removed.
-    inreplace %w[CMakeLists.txt falcosecurity-libs/cmake/modules/CompilerFlags.cmake],
-              "set(CMAKE_EXE_LINKER_FLAGS \"-pagezero_size 10000 -image_base 100000000\")",
-              ""
+    inreplace "CMakeLists.txt", "set(CMAKE_EXE_LINKER_FLAGS \"-pagezero_size 10000 -image_base 100000000\")", ""
 
     args = std_cmake_args + %W[
       -DSYSDIG_VERSION=#{version}
