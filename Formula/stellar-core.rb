@@ -52,7 +52,7 @@ class StellarCore < Formula
 
   test do
     system "#{bin}/stellar-core", "test",
-      "'[bucket],[crypto],[herder],[upgrades],[accountsubentriescount]," \
-      "[bucketlistconsistent],[cacheisconsistent],[fs]'"
+      "'[herder],[upgrades],[accountsubentriescount]," \
+      "[bucketlistconsistent],[topology]'"
   end
 end
