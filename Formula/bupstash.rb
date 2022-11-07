@@ -1,8 +1,8 @@
 class Bupstash < Formula
   desc "Easy and efficient encrypted backups"
   homepage "https://bupstash.io"
-  url "https://github.com/andrewchambers/bupstash/releases/download/v0.11.1/bupstash-v0.11.1-src+deps.tar.gz"
-  sha256 "9433379491e7552032620789a0f8a702159a0744484e3fd9fe73eb9eb1d71351"
+  url "https://github.com/andrewchambers/bupstash/releases/download/v0.12.0/bupstash-v0.12.0-src+deps.tar.gz"
+  sha256 "e3054c03b0d57ba718bd2cab8c24df13153369dea311e5a595d586ad24865793"
   license "MIT"
 
   bottle do
