@@ -52,20 +52,6 @@ class Llvm < Formula
   # Fails at building LLDB
   fails_with gcc: "5"
 
-  # Fix a macro redefinition in LLDB. Remove when patch is released.
-  patch do
-    url "https://github.com/llvm/llvm-project/commit/81fc5f7909a4ef5a8d4b5da2a10f77f7cb01ba63.patch?full_index=1"
-    sha256 "d2a2b61f7024fdf45f24a8ad8592808fc94c9ce6db8df3152fd9f46180c43074"
-  end
-
-  # Fix a `SwigValueWrapper` error caused by a change in swig 4.1.0.
-  # Remove when patch is released. See:
-  # https://github.com/swig/swig/issues/2377
-  patch do
-    url "https://github.com/llvm/llvm-project/commit/f0a25fe0b746f56295d5c02116ba28d2f965c175.patch?full_index=1"
-    sha256 "a2cf01ca5f632f7372f03c7a9db438f5f7083daae90a617241a0c41ece979267"
-  end
-
   def python3
     "python3.11"
   end
