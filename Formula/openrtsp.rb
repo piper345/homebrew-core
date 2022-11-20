@@ -1,10 +1,10 @@
 class Openrtsp < Formula
   desc "Command-line RTSP client"
   homepage "http://www.live555.com/openRTSP"
-  url "http://www.live555.com/liveMedia/public/live.2022.10.01.tar.gz"
-  mirror "https://download.videolan.org/pub/videolan/testing/contrib/live555/live.2022.10.01.tar.gz"
+  url "http://www.live555.com/liveMedia/public/live.2022.11.19.tar.gz"
+  mirror "https://download.videolan.org/pub/videolan/testing/contrib/live555/live.2022.11.19.tar.gz"
   # Keep a mirror as upstream tarballs are removed after each version
-  sha256 "429de73061e3fc6901c4d2f0b7562ae3f6233060ca4b5e182fe555d065cbdd45"
+  sha256 "75c2ec38d85a861890d4d214b88ecfc8572d169bbbe1bcd76cfbfa6718d09699"
   license "LGPL-3.0-or-later"
 
   livecheck do
@@ -25,6 +25,13 @@ class Openrtsp < Formula
   end
 
   depends_on "openssl@3"
+
+  # Fix usage of IN6ADDR_ANY_INIT macro (error: expected expression). See:
+  # https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/netinet_in.h.html
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/2eabc6f/openrtsp/openrtsp.2022.11.19.patch"
+    sha256 "33f6b852b2673e59cce7dedb1e6d5461a23d352221236c5964de077d137120cd"
+  end
 
   def install
     # Avoid linkage to system OpenSSL
