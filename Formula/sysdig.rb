@@ -2,11 +2,10 @@ class Sysdig < Formula
   desc "System-level exploration and troubleshooting tool"
   homepage "https://sysdig.com/"
   license "Apache-2.0"
-  revision 7
 
   stable do
-    url "https://github.com/draios/sysdig/archive/0.29.3.tar.gz"
-    sha256 "6b96797859002ab69a2bed4fdba1c7fe8064ecf8661621ae7d8fbf8599ffa636"
+    url "https://github.com/draios/sysdig/archive/0.30.2.tar.gz"
+    sha256 "44207898c875d1a51bbc6d512b069ff690c08293056f184977b7d0984b0958b0"
 
     # Update to value of FALCOSECURITY_LIBS_VERSION found in
     # https://github.com/draios/sysdig/blob/#{version}/cmake/modules/falcosecurity-libs.cmake
