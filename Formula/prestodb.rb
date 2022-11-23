@@ -3,8 +3,8 @@ class Prestodb < Formula
 
   desc "Distributed SQL query engine for big data"
   homepage "https://prestodb.io"
-  url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-server/0.277/presto-server-0.277.tar.gz"
-  sha256 "a6f24e176cea7e43828db5554b548228096c683f9c04066fa574f903533e3e25"
+  url "https://search.maven.org/remotecontent?filepath=com/facebook/presto/presto-server/0.278/presto-server-0.278.tar.gz"
+  sha256 "f045df2a2b2e4dea96e93acf378b94714a047a754998725894acf617f1cdc4e0"
   license "Apache-2.0"
 
   # Upstream has said that we should check Maven for Presto version information
