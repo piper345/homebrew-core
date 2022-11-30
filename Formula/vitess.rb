@@ -16,8 +16,7 @@ class Vitess < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "9b08d79ad6debfbf9289a408e6a3df44f36542d12cbe76b337fcfc057498d088"
   end
 
-  # Try to switch to the latest go on the next release
-  depends_on "go@1.18" => :build
+  depends_on "go" => :build
   depends_on "etcd"
 
   def install
