@@ -58,7 +58,6 @@ class Mesa < Formula
     depends_on "libxrandr"
     depends_on "libxshmfence"
     depends_on "libxv"
-    depends_on "libxvmc"
     depends_on "libxxf86vm"
     depends_on "lm-sensors"
     depends_on "wayland"
@@ -111,9 +110,8 @@ class Mesa < Formula
         -Dopengl=true
         -Dgles1=enabled
         -Dgles2=enabled
-        -Dgallium-xvmc=disabled
         -Dvalgrind=false
-        -Dtools=drm-shim,etnaviv,freedreno,glsl,nir,nouveau,xvmc,lima
+        -Dtools=drm-shim,etnaviv,freedreno,glsl,nir,nouveau,lima
       ]
     end
 
