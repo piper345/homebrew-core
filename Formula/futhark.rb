@@ -5,8 +5,8 @@ class Futhark < Formula
   head "https://github.com/diku-dk/futhark.git", branch: "master"
 
   stable do
-    url "https://github.com/diku-dk/futhark/archive/v0.22.4.tar.gz"
-    sha256 "5edf79ed2076192ead64efb8a4d30d05b56b2c1ec5bdd0905c33d6099d312850"
+    url "https://github.com/diku-dk/futhark/archive/v0.22.5.tar.gz"
+    sha256 "63295ec8bdca70ce121968fd1673f0e915d38aee4d61f717e59975b827ede7a8"
 
     # Use newer hackage snapshot to support GHC 9.4. Remove on the next release
     patch do
