@@ -3,8 +3,8 @@ require "language/node"
 class Eslint < Formula
   desc "AST-based pattern checker for JavaScript"
   homepage "https://eslint.org"
-  url "https://registry.npmjs.org/eslint/-/eslint-8.29.0.tgz"
-  sha256 "358922f489f4c6cca00ed41bfc2f05336851fcd3aba0f9b48335585f5faa1a24"
+  url "https://registry.npmjs.org/eslint/-/eslint-8.30.0.tgz"
+  sha256 "8fa21a77169492cfcb7f9afb1eb6fbbaba5a979b8311c615431b81253721d35c"
   license "MIT"
 
   bottle do
