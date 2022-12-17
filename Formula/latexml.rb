@@ -1,10 +1,9 @@
 class Latexml < Formula
   desc "LaTeX to XML/HTML/MathML Converter"
   homepage "https://dlmf.nist.gov/LaTeXML/"
-  url "https://dlmf.nist.gov/LaTeXML/releases/LaTeXML-0.8.6.tar.gz"
-  sha256 "9529c651b67f5e8ddef1fd1852f974e756a17b711c46d4118f0677ad0e6e9bb1"
+  url "https://dlmf.nist.gov/LaTeXML/releases/LaTeXML-0.8.7.tar.gz"
+  sha256 "25da9d9440779dec0dadd4cc2d4227e8eab87437c0719877274dcfb906a4cc79"
   license :public_domain
-  revision 1
   head "https://github.com/brucemiller/LaTeXML.git", branch: "master"
 
   livecheck do
