@@ -25,6 +25,7 @@ class Nexus < Formula
   depends_on arch: :x86_64 # openjdk@8 is not supported on ARM
   depends_on "openjdk@8"
 
+  uses_from_macos "curl" => :build
   uses_from_macos "unzip" => :build
 
   def install
