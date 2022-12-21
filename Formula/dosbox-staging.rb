@@ -35,6 +35,7 @@ class DosboxStaging < Formula
   depends_on "mt32emu"
   depends_on "opusfile"
   depends_on "sdl2"
+  depends_on "sdl2_image"
   depends_on "sdl2_net"
   depends_on "speexdsp"
   uses_from_macos "zlib"
