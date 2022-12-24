@@ -1,10 +1,9 @@
 class Ocp < Formula
   desc "UNIX port of the Open Cubic Player"
   homepage "https://stian.cubic.org/project-ocp.php"
-  url "https://stian.cubic.org/ocp/ocp-0.2.99.tar.xz"
-  sha256 "d00165e206403b876b18edfc264abc8b6ce3d772be7e784fe4d358e37e57affd"
+  url "https://stian.cubic.org/ocp/ocp-0.2.101.tar.xz"
+  sha256 "e80f901d8284f324f34c7acfad5f2365f2b1b846c7747aeea7540030e83f0c68"
   license "GPL-2.0-or-later"
-  revision 2
   head "https://github.com/mywave82/opencubicplayer.git", branch: "master"
 
   livecheck do
