@@ -28,7 +28,7 @@ class Bottom < Formula
 
     # Completion scripts are generated in the crate's build
     # directory, which includes a fingerprint hash. Try to locate it first
-    out_dir = Dir["target/tmp/bottom"].first
+    out_dir = "target/tmp/bottom"
     bash_completion.install "#{out_dir}/completion/btm.bash"
     fish_completion.install "#{out_dir}/completion/btm.fish"
     zsh_completion.install "#{out_dir}/completion/_btm"
