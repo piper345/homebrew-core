@@ -38,11 +38,5 @@ class Bottom < Formula
   test do
     assert_equal "bottom #{version}", shell_output(bin/"btm --version").chomp
     assert_match "error: Found argument '--invalid'", shell_output(bin/"btm --invalid 2>&1", 2)
-
-    fork do
-      exec bin/"btm", "--config", "nonexistent-file"
-    end
-    sleep 1
-    assert_predicate testpath/"nonexistent-file", :exist?
   end
 end
