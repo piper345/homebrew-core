@@ -21,19 +21,23 @@ class Bottom < Formula
   depends_on "rust" => :build
 
   def install
+    # enable build-time generation of completion scripts and manpage
+    ENV["BTM_GENERATE"] = "true"
+
     system "cargo", "install", *std_cargo_args
 
     # Completion scripts are generated in the crate's build
     # directory, which includes a fingerprint hash. Try to locate it first
-    out_dir = Dir["target/release/build/bottom-*/out"].first
-    bash_completion.install "#{out_dir}/btm.bash"
-    fish_completion.install "#{out_dir}/btm.fish"
-    zsh_completion.install "#{out_dir}/_btm"
+    out_dir = Dir["target/tmp/bottom"].first
+    bash_completion.install "#{out_dir}/completion/btm.bash"
+    fish_completion.install "#{out_dir}/completion/btm.fish"
+    zsh_completion.install "#{out_dir}/completion/_btm"
+    man1.install "#{out_dir}/manpage/btm.1"
   end
 
   test do
     assert_equal "bottom #{version}", shell_output(bin/"btm --version").chomp
-    assert_match "error: Found argument '--invalid'", shell_output(bin/"btm --invalid 2>&1", 1)
+    assert_match "error: Found argument '--invalid'", shell_output(bin/"btm --invalid 2>&1", 2)
 
     fork do
       exec bin/"btm", "--config", "nonexistent-file"
