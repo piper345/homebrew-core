@@ -1,9 +1,9 @@
 class Gnunet < Formula
   desc "Framework for distributed, secure and privacy-preserving applications"
   homepage "https://gnunet.org/"
-  url "https://ftp.gnu.org/gnu/gnunet/gnunet-0.17.5.tar.gz"
-  mirror "https://ftpmirror.gnu.org/gnunet/gnunet-0.17.5.tar.gz"
-  sha256 "8a744ff7a95d1e83215cce118050640f6c12261abe4c60a56bcf88e500f0023d"
+  url "https://ftp.gnu.org/gnu/gnunet/gnunet-0.19.1.tar.gz"
+  mirror "https://ftpmirror.gnu.org/gnunet/gnunet-0.19.1.tar.gz"
+  sha256 "41a7b07ffe141c4fec20aaba1aeee12d5a9af92c2055dbfc7279b0584f819262"
   license "AGPL-3.0-or-later"
 
   bottle do
@@ -28,6 +28,12 @@ class Gnunet < Formula
 
   uses_from_macos "curl"
   uses_from_macos "sqlite"
+
+  # Fix https://bugs.gnunet.org/view.php?id=7550, remove in next release
+  patch do
+    url "https://git.gnunet.org/gnunet.git/patch/?id=6f88d7b83926282502e3a68900b29104579bbe8b"
+    sha256 "c21573e7643eb41fcb6730a6788a9d608c539855368081834197303a696ec782"
+  end
 
   def install
     ENV.deparallelize if OS.linux?
