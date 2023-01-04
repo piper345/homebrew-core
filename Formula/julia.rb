@@ -2,9 +2,13 @@ class Julia < Formula
   desc "Fast, Dynamic Programming Language"
   homepage "https://julialang.org/"
   # Use the `-full` tarball to avoid having to download during the build.
+  #
+  # TODO: Use system `suite-sparse` when `julia` supports v6.
+  # Issue ref: https://github.com/JuliaLang/julia/issues/47884
   url "https://github.com/JuliaLang/julia/releases/download/v1.8.3/julia-1.8.3-full.tar.gz"
   sha256 "52b6895a9d4ad2fe36db261ee8c4c8cc9212b837a12f93002faaf537a2151f50"
   license all_of: ["MIT", "BSD-3-Clause", "Apache-2.0", "BSL-1.0"]
+  revision 1
   head "https://github.com/JuliaLang/julia.git", branch: "master"
 
   bottle do
@@ -32,7 +36,7 @@ class Julia < Formula
   depends_on "openlibm"
   depends_on "p7zip"
   depends_on "pcre2"
-  depends_on "suite-sparse"
+  # TODO: depends_on "suite-sparse"
   depends_on "utf8proc"
 
   uses_from_macos "perl" => :build
@@ -69,7 +73,7 @@ class Julia < Formula
       USE_SYSTEM_LAPACK=1
       USE_SYSTEM_GMP=1
       USE_SYSTEM_MPFR=1
-      USE_SYSTEM_LIBSUITESPARSE=1
+      USE_SYSTEM_LIBSUITESPARSE=0
       USE_SYSTEM_UTF8PROC=1
       USE_SYSTEM_MBEDTLS=1
       USE_SYSTEM_LIBSSH2=1
