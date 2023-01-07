@@ -1,9 +1,9 @@
 class Log4cxx < Formula
   desc "Library of C++ classes for flexible logging"
   homepage "https://logging.apache.org/log4cxx/index.html"
-  url "https://www.apache.org/dyn/closer.lua?path=logging/log4cxx/0.13.0/apache-log4cxx-0.13.0.tar.gz"
-  mirror "https://archive.apache.org/dist/logging/log4cxx/0.13.0/apache-log4cxx-0.13.0.tar.gz"
-  sha256 "4e5be64b6b1e6de8525f8b87635270b81f772a98902d20d7ac646fdf1ac08284"
+  url "https://www.apache.org/dyn/closer.lua?path=logging/log4cxx/1.0.0/apache-log4cxx-1.0.0.tar.gz"
+  mirror "https://archive.apache.org/dist/logging/log4cxx/1.0.0/apache-log4cxx-1.0.0.tar.gz"
+  sha256 "6df9f1f682650de6045309473d5b2fe1f798a03ceb36a74a5b21f5520962d32f"
   license "Apache-2.0"
 
   bottle do
