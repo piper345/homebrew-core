@@ -18,6 +18,12 @@ class Macchina < Formula
 
   depends_on "rust" => :build
 
+  # patch for `Invalid variant: OperatingSystem`, remove in next release
+  patch do
+    url "https://github.com/Macchina-CLI/macchina/commit/8abf983dcf7655725dd53045e5aa7f801af3e42f.patch?full_index=1"
+    sha256 "a751658853329c52ff9575e764d42123f86ef1df68c3362166d2f59a26545b1b"
+  end
+
   def install
     system "cargo", "install", *std_cargo_args
   end
