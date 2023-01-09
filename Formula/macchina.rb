@@ -1,8 +1,8 @@
 class Macchina < Formula
   desc "System information fetcher, with an emphasis on performance and minimalism"
   homepage "https://github.com/Macchina-CLI/macchina"
-  url "https://github.com/Macchina-CLI/macchina/archive/v6.1.7.tar.gz"
-  sha256 "5146f31740398023a75d19292392284e40cb71e552a877b8b2c72ee52ffe486d"
+  url "https://github.com/Macchina-CLI/macchina/archive/refs/tags/v6.1.8.tar.gz"
+  sha256 "e827f640b55fe47a6127dd0c276e76b597e3cb83916be37351cdd6a81d75311e"
   license "MIT"
 
   bottle do
@@ -17,12 +17,6 @@ class Macchina < Formula
   end
 
   depends_on "rust" => :build
-
-  # patch for `Invalid variant: OperatingSystem`, remove in next release
-  patch do
-    url "https://github.com/Macchina-CLI/macchina/commit/8abf983dcf7655725dd53045e5aa7f801af3e42f.patch?full_index=1"
-    sha256 "a751658853329c52ff9575e764d42123f86ef1df68c3362166d2f59a26545b1b"
-  end
 
   def install
     system "cargo", "install", *std_cargo_args
