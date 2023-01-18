@@ -22,22 +22,21 @@ class V2ray < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "1a9d347cd01bddb5e1a4c81c0374b4c6ca62b5ea3f1f4e353c1c68f59895089d"
   end
 
-  # Bump to Go 1.18 with when v5 releases.
-  depends_on "go@1.17" => :build
+  depends_on "go@1.18" => :build
 
   resource "geoip" do
-    url "https://github.com/v2fly/geoip/releases/download/202204280105/geoip.dat"
-    sha256 "38fe72a33f23920cf14e804bf14c26ea0210db3ea2108a2d51fa32c48ac53170"
+    url "https://github.com/v2fly/geoip/releases/download/202301120046/geoip.dat"
+    sha256 "1af779bf9ba759be7590be3b3baf83d7e5c686b003f6f39dd3ab0e847eaedb72"
   end
 
   resource "geoip-only-cn-private" do
-    url "https://github.com/v2fly/geoip/releases/download/202204280105/geoip-only-cn-private.dat"
-    sha256 "e8d0d7469b90e718f3b5cba033fec902dd05fab44c28c779a443e4c1f8aa0bf2"
+    url "https://github.com/v2fly/geoip/releases/download/202301120046/geoip-only-cn-private.dat"
+    sha256 "850ce49fc34abaab94fffcd7f9c45ce087cd873a793fb67c8fa850f3facf8afa"
   end
 
   resource "geosite" do
-    url "https://github.com/v2fly/domain-list-community/releases/download/20220501162639/dlc.dat"
-    sha256 "dff924231ec74dd51d28177e57bc4fd918f212d993a6c1264f335e966ceb5aa9"
+    url "https://github.com/v2fly/domain-list-community/releases/download/20230117091624/dlc.dat"
+    sha256 "603bc4be59858702858267a185aa4ee9e9a1d61604068511cd65907da5738d51"
   end
 
   def install
