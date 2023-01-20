@@ -4,6 +4,7 @@ class Sundials < Formula
   url "https://github.com/LLNL/sundials/releases/download/v6.5.0/sundials-6.5.0.tar.gz"
   sha256 "4e0b998dff292a2617e179609b539b511eb80836f5faacf800e688a886288502"
   license "BSD-3-Clause"
+  revision 1
 
   livecheck do
     url "https://computing.llnl.gov/projects/sundials/sundials-software"
