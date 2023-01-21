@@ -63,6 +63,12 @@ class Bigloo < Formula
       ]
     end
 
+    if OS.linux?
+      args += %w[
+        --disable-libbacktrace
+      ]
+    end
+
     system "./configure", *args
 
     system "make"
