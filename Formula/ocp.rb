@@ -24,6 +24,7 @@ class Ocp < Formula
 
   depends_on "pkg-config" => :build
   depends_on "xa" => :build
+  depends_on "ancient"
   depends_on "cjson"
   depends_on "flac"
   depends_on "freetype"
