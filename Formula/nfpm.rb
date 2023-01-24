@@ -29,7 +29,7 @@ class Nfpm < Formula
       shell_output("#{bin}/nfpm --version 2>&1")
 
     system bin/"nfpm", "init"
-    assert_match "nfpm example config file", File.read(testpath/"nfpm.yaml")
+    assert_match "nfpm example configuration file", File.read(testpath/"nfpm.yaml")
 
     # remove the generated default one
     # and use stubbed one for another test
