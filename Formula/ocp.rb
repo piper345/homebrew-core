@@ -53,7 +53,7 @@ class Ocp < Formula
     url "https://ftp.gnu.org/gnu/unifont/unifont-15.0.01/unifont-15.0.01.tar.gz"
     sha256 "7d11a924bf3c63ea7fdf2da2b96d6d4986435bedfd1e6816c8ac2e6db47634d5"
   end
-  
+
   patch :DATA
 
   def install
