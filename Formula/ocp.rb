@@ -53,6 +53,8 @@ class Ocp < Formula
     url "https://ftp.gnu.org/gnu/unifont/unifont-15.0.01/unifont-15.0.01.tar.gz"
     sha256 "7d11a924bf3c63ea7fdf2da2b96d6d4986435bedfd1e6816c8ac2e6db47634d5"
   end
+  
+  patch :DATA
 
   def install
     ENV.deparallelize
@@ -88,3 +90,17 @@ class Ocp < Formula
     system "#{bin}/ocp", "--help"
   end
 end
+__END__
+diff --git a/devp/devpcoreaudio.c b/devp/devpcoreaudio.c
+index eaa084f..44ca209 100644
+--- a/devp/devpcoreaudio.c
++++ b/devp/devpcoreaudio.c
+@@ -485,7 +485,7 @@ static const struct plrDevAPI_t devpCoreAudio = {
+ 	devpCoreAudioPause,
+ 	devpCoreAudioStop,
+ 	0, /* VolRegs */
+-	0 /* ProcessKey */;
++	0 /* ProcessKey */
+ };
+ 
+ static int CoreAudioInit(const struct deviceinfo *c, const char *handle)
