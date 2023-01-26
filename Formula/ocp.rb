@@ -58,7 +58,6 @@ class Ocp < Formula
 
   def install
     ENV.deparallelize
-    ENV.append "CXXFLAGS", "-std=c++17"
 
     # Required for SDL2
     resource("unifont").stage do |r|
