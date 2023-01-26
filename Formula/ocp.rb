@@ -72,6 +72,8 @@ class Ocp < Formula
       --prefix=#{prefix}
       --without-x11
       --without-desktop_file_install
+      --without-update-desktop-database
+      --without-update-mime-database
       --with-unifontdir-ttf=#{share}
     ]
 
