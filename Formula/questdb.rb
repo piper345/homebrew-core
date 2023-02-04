@@ -9,12 +9,12 @@ class Questdb < Formula
     sha256 cellar: :any_skip_relocation, all: "54bc839dd7bde6fcf2a8b4c49df194c59d2f27e0a7f90a2d634a5f4c754fa91b"
   end
 
-  depends_on "openjdk@11"
+  depends_on "openjdk@17"
 
   def install
     rm_rf "questdb.exe"
     libexec.install Dir["*"]
-    (bin/"questdb").write_env_script libexec/"questdb.sh", Language::Java.overridable_java_home_env("11")
+    (bin/"questdb").write_env_script libexec/"questdb.sh", Language::Java.overridable_java_home_env("17")
     inreplace libexec/"questdb.sh", "/usr/local/var/questdb", var/"questdb"
   end
 
