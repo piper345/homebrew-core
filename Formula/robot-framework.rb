@@ -94,8 +94,8 @@ class RobotFramework < Formula
   end
 
   resource "robotframework-pythonlibcore" do
-    url "https://files.pythonhosted.org/packages/a1/14/b0290fe3db60b109abea2ba97245fdaa29a9c7e2aaa0babcc1a51f9085d8/robotframework-pythonlibcore-4.0.0.tar.gz"
-    sha256 "6028f4323b2ba30e1521f978e2e959107adb8590b5d3f2923af3c712315d494c"
+    url "https://files.pythonhosted.org/packages/73/a9/8e721a37b2ad24865700833244a09f6e499529e3377bb0c9e003f457799b/robotframework-pythonlibcore-4.1.0.tar.gz"
+    sha256 "b677313e2015d28a8bb2bbeb1d98d46e8e850b213113523a7cc9a7ca85016187"
   end
 
   resource "robotframework-selenium2library" do
@@ -114,13 +114,13 @@ class RobotFramework < Formula
   end
 
   resource "scp" do
-    url "https://files.pythonhosted.org/packages/01/96/82028abe87441ae172ce9df2eeb46274130475bfeeb4dedeaddaf75b16a9/scp-0.14.4.tar.gz"
-    sha256 "54699b92cb68ae34b5928c48a888eab9722a212502cba89aa795bd56597505bd"
+    url "https://files.pythonhosted.org/packages/b6/50/277f788967eed7aa2cbb669ff91dff90d2232bfda95577515a783bbccf73/scp-0.14.5.tar.gz"
+    sha256 "64f0015899b3d212cb8088e7d40ebaf0686889ff0e243d5c1242efe8b50f053e"
   end
 
   resource "selenium" do
-    url "https://files.pythonhosted.org/packages/3e/3f/69a34f8a83c77bba0ea13323c665ee27bf1b357a049c06c7c611dad10f75/selenium-4.7.2.tar.gz"
-    sha256 "3aefa14a28a42e520550c1cd0f29cf1d566328186ea63aa9a3e01fb265b5894d"
+    url "https://files.pythonhosted.org/packages/2e/3d/492cf1a6823c48369328572c6bc63b7a957ba25c0009ee6bdb507cd9a6a4/selenium-4.8.0.tar.gz"
+    sha256 "fee36724d6cf0b18c73781bb8ec7be4a35ab1e2564e64e64e64da75e50e052af"
   end
 
   resource "sniffio" do
