@@ -20,6 +20,7 @@ class Dooit < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d48d258e8f5a63f17adb84f73596d05de510c3419e89b27638b1a2ef03537b8a"
   end
 
+  depends_on "cmake" => :build
   depends_on "poetry" => :build
   depends_on "python@3.11"
   depends_on "pyyaml"
