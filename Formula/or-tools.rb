@@ -1,10 +1,10 @@
 class OrTools < Formula
   desc "Google's Operations Research tools"
   homepage "https://developers.google.com/optimization/"
-  url "https://github.com/google/or-tools/archive/v9.5.tar.gz"
-  sha256 "57f81b94949d35dc042690db3fa3f53245cffbf6824656e1a03f103a3623c939"
+  url "https://github.com/google/or-tools/archive/v2016-06.tar.gz"
+  version "2016-06"
+  sha256 "98773dca1bca5c61e11a372a2a53b7a10c8834a62219f8bf50bf9567219a6343"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/google/or-tools.git", branch: "stable"
 
   livecheck do
