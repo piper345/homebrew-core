@@ -83,13 +83,13 @@ class Ansible < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/dc/4c/2f3201e2ebd1440a9175cd4ade50ecb061db45dc7ce91d5c651c9f3a5fb6/boto3-1.26.60.tar.gz"
-    sha256 "f0824b3bcf803800d3ecef903b4840427e4b3d37a069f6fc9a86310f7e036ad5"
+    url "https://files.pythonhosted.org/packages/8d/59/72ed66c45aacdc1339423ed2f4e350594ed233deabac726dbcd69b4d847f/boto3-1.26.67.tar.gz"
+    sha256 "c2e21ac64370fee1f3dccd97b4767e89d046c45c00faec27c36405618e34c7e5"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/dc/0c/7377983853fb50de53d409c82466bacf86d0273b3f0ebce070b00388f731/botocore-1.29.60.tar.gz"
-    sha256 "a21217ccf4613c9ebbe4c3192e13ba91d46be642560e39a16406662a398a107b"
+    url "https://files.pythonhosted.org/packages/fb/e3/5557a3301221e8c984344acce43af61ed2ff99cf39aefa4305e400ef3620/botocore-1.29.67.tar.gz"
+    sha256 "0ccec4a906b6b8c7bb6bc5226509059ee9ed94d3cf1014487ef5b8e56801e6a3"
   end
 
   resource "cachetools" do
@@ -123,8 +123,8 @@ class Ansible < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/12/e3/c46c274cf466b24e5d44df5d5cd31a31ff23e57f074a2bb30931a8c9b01a/cryptography-39.0.0.tar.gz"
-    sha256 "f964c7dcf7802d133e8dbd1565914fa0194f9d683d82411989889ecd701e8adf"
+    url "https://files.pythonhosted.org/packages/6a/f5/a729774d087e50fffd1438b3877a91e9281294f985bda0fd15bf99016c78/cryptography-39.0.1.tar.gz"
+    sha256 "d1f6198ee6d9148405e49887803907fe8962a23e6c6f83ea7d98f1c0de375695"
   end
 
   resource "debtcollector" do
@@ -498,8 +498,8 @@ class Ansible < Formula
   end
 
   resource "simplejson" do
-    url "https://files.pythonhosted.org/packages/0f/a0/79d2bec499cb53678bc20d41f9706ca02777f0876efa9b29a69fb3d55dfd/simplejson-3.18.1.tar.gz"
-    sha256 "746086e3ef6d74b53599df31b491d88a355abf2e31c837137dd90f8c4561cafa"
+    url "https://files.pythonhosted.org/packages/b1/86/a67f6f595c5da14fa80bb4a8f7084c391ac1bfd3208ea4906307afc2b181/simplejson-3.18.3.tar.gz"
+    sha256 "ebb53837c5ffcb6100646018565d3f1afed6f4b185b14b2c9cbccf874fe40157"
   end
 
   resource "stevedore" do
@@ -528,8 +528,8 @@ class Ansible < Formula
   end
 
   resource "websocket-client" do
-    url "https://files.pythonhosted.org/packages/02/cd/1adc1276f1e8f6a929783f4c2992ec7a4934a81f8ced3d4a87191cc168c2/websocket-client-1.5.0.tar.gz"
-    sha256 "561ca949e5bbb5d33409a37235db55c279235c78ee407802f1d2314fff8a8536"
+    url "https://files.pythonhosted.org/packages/8b/94/696484b0c13234c91b316bc3d82d432f9b589a9ef09d016875a31c670b76/websocket-client-1.5.1.tar.gz"
+    sha256 "3f09e6d8230892547132177f575a4e3e73cfdf06526e20cc02aa1c3b47184d40"
   end
 
   resource "wrapt" do
@@ -553,8 +553,8 @@ class Ansible < Formula
   end
 
   resource "zipp" do
-    url "https://files.pythonhosted.org/packages/35/05/f81a74656c04e94f05c1ef186127cceb913493f1f8a21bb142a93c786ee8/zipp-3.12.0.tar.gz"
-    sha256 "73efd63936398aac78fd92b6f4865190119d6c91b531532e798977ea8dd402eb"
+    url "https://files.pythonhosted.org/packages/1f/29/54ba1934c45af649698410456fa8a78a475c82efd5c562e51011079458d1/zipp-3.12.1.tar.gz"
+    sha256 "a3cac813d40993596b39ea9e93a18e8a2076d5c378b8bc88ec32ab264e04ad02"
   end
 
   def install
