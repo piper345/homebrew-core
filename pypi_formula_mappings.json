@@ -250,6 +250,9 @@
   "gcalcli": {
     "exclude_packages": ["six"]
   },
+  "gdbgui": {
+    "exclude_packages": ["six"]
+  },
   "gcovr": {
     "exclude_packages": ["pygments"]
   },
