@@ -19,6 +19,7 @@ class Howdoi < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "fc06bed9bc40d06c68b01963be9ddcb8460ea0fc47cf1479d04d05d3cdb2a70c"
   end
 
+  depends_on "cmake" => :build
   depends_on "pygments"
   depends_on "python@3.11"
   depends_on "six"
