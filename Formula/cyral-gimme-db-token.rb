@@ -30,13 +30,13 @@ class CyralGimmeDbToken < Formula
   end
 
   resource "awscli" do
-    url "https://files.pythonhosted.org/packages/87/4c/6b0b4b715ae5d5b6594bce69998d0c01d335ad97fc8c5ccfee4b984695a5/awscli-1.27.67.tar.gz"
-    sha256 "7516f3f102d7a65afe7a003f74ed0bcb8bcb96b69d7ac9afc40e55cf52a958b4"
+    url "https://files.pythonhosted.org/packages/2e/d1/2328a928e88c3cc77889c4b4d2b7e8c3ba12ba1953f4ad416ac1816d5407/awscli-1.27.68.tar.gz"
+    sha256 "dfc0f8ae6677bdfdc2c69b35a68feacc261cd52d5686e8f8f65e552b4987fcf7"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/fb/e3/5557a3301221e8c984344acce43af61ed2ff99cf39aefa4305e400ef3620/botocore-1.29.67.tar.gz"
-    sha256 "0ccec4a906b6b8c7bb6bc5226509059ee9ed94d3cf1014487ef5b8e56801e6a3"
+    url "https://files.pythonhosted.org/packages/62/b3/c234ae00022a3e9b553e5da8daa977aa276c19f9dce59279836de4025f7d/botocore-1.29.68.tar.gz"
+    sha256 "8f5cb96dc0862809d29fe512087c77c15fe6328a2d8238f0a96cccb6eb77ec12"
   end
 
   resource "certifi" do
