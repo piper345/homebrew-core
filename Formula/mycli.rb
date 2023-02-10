@@ -88,8 +88,8 @@ class Mycli < Formula
   end
 
   resource "sqlglot" do
-    url "https://files.pythonhosted.org/packages/d7/c0/cabf73bd17f971051ebbf1736605505829963b40ca7c46ce659cf82f0a90/sqlglot-11.0.0.tar.gz"
-    sha256 "6bd55a4b5898de900126390438a7cd13f77b042527f0711524e3288018d292fe"
+    url "https://files.pythonhosted.org/packages/9f/94/e28696f966305c717710fc93ce297ab64b294dde2d6d56d13b611c444818/sqlglot-11.0.1.tar.gz"
+    sha256 "2bdeeaa20c215d48ec28a61057d76568d6a9aeb19af79b0470f7c2e42619aa0c"
   end
 
   resource "sqlparse" do
