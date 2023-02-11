@@ -57,8 +57,8 @@ class Charmcraft < Formula
   end
 
   resource "craft-parts" do
-    url "https://files.pythonhosted.org/packages/1b/9f/7fd8f83bfeae1551f8226c42abb95a94f60c9074fdd74e4af2e4d5fb9098/craft-parts-1.18.0.tar.gz"
-    sha256 "2859a1c74abe43a13013f8e8bd3dae6aaebe11129eca3761e5a90c514173b02f"
+    url "https://files.pythonhosted.org/packages/92/5c/ffc99324d9dccf65509142095cb773afeb88cf92e16ee6dbb8f11d13c933/craft-parts-1.18.1.tar.gz"
+    sha256 "920885592f43d2339bf1bbd1b149d4dc7bb37d467475ef680c9c2971ca2e46e7"
   end
 
   resource "craft-providers" do
