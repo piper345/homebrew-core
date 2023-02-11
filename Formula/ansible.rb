@@ -84,13 +84,13 @@ class Ansible < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/eb/d2/3de371896943ea28f7e0c879c2b5f80ff4fda03ee354956b5874301135e9/boto3-1.26.68.tar.gz"
-    sha256 "c92dd0fde7839c0ca9c16a989d67ceb7f80f53de19f2b087fd1182f2af41b2ae"
+    url "https://files.pythonhosted.org/packages/c0/63/5dd782da5653528c35ca2ec7f44a41ec3121cda8701f14c6416912118dc6/boto3-1.26.69.tar.gz"
+    sha256 "eb8cde24a4c5755c35126e8cd460e6b51c63d04292419e7e95721232720c7e5b"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/62/b3/c234ae00022a3e9b553e5da8daa977aa276c19f9dce59279836de4025f7d/botocore-1.29.68.tar.gz"
-    sha256 "8f5cb96dc0862809d29fe512087c77c15fe6328a2d8238f0a96cccb6eb77ec12"
+    url "https://files.pythonhosted.org/packages/db/31/720ac07bd096fdd24fbeb42111638b41fd220e618790b94ada77a6bd1f3e/botocore-1.29.69.tar.gz"
+    sha256 "7e1bebca013544fbc298cb58603bfccd5f71b49c720a5c33c07cf5dfc8145a1f"
   end
 
   resource "cachetools" do
@@ -299,23 +299,23 @@ class Ansible < Formula
   end
 
   resource "oslo.context" do
-    url "https://files.pythonhosted.org/packages/96/e1/7bac157e4a828b1d64510ba0b4362a74b4c68ecc8c8588d6d22145b0f4a8/oslo.context-5.0.0.tar.gz"
-    sha256 "88c0c6d076681c60d560f7d66565e42ac116c5aa8a28a04db7c0ac0025133224"
+    url "https://files.pythonhosted.org/packages/67/b5/ab5df08269bd5f20470d38c3c14776eea88ed42cc367db4dd02ba5eed99e/oslo.context-5.1.0.tar.gz"
+    sha256 "8b2d9a4f8c46aee94d4e8b7ca1ae09789bf842a47068aafab088e26c3314ab22"
   end
 
   resource "oslo.i18n" do
-    url "https://files.pythonhosted.org/packages/7c/d8/a56cdadc3eb21f399327c45662e96479cb73beee0d602769b7847e857e7d/oslo.i18n-5.1.0.tar.gz"
-    sha256 "6bf111a6357d5449640852de4640eae4159b5562bbba4c90febb0034abc095d0"
+    url "https://files.pythonhosted.org/packages/52/7a/655c1c95666d30400d59612a67f510a5395d821f7ae9e306b3fa2a2102e0/oslo.i18n-6.0.0.tar.gz"
+    sha256 "ed10686b75f7c607825177a669155f4e259ce39f6143a375f6359bbcaa4a35cd"
   end
 
   resource "oslo.log" do
-    url "https://files.pythonhosted.org/packages/4a/08/e2d77dba0f47664b75a0cd0431e08cb1636b3096cd6aeba77a0c1c68190b/oslo.log-5.0.2.tar.gz"
-    sha256 "e45e7312aa71528a16736ce45152be3f1af123f5ef62aa81da046805584fcca3"
+    url "https://files.pythonhosted.org/packages/46/9b/0bed0585d484b4da92278a572803db4bd9f056b907ea6dbcdc7220b5fdc9/oslo.log-5.1.0.tar.gz"
+    sha256 "f6ac37af95918e05d7a1dd7d0b0552ba8b22b2e430862eb336de592d25c84f29"
   end
 
   resource "oslo.serialization" do
-    url "https://files.pythonhosted.org/packages/c0/00/166651f281396a57d5342f1d8be772c7f54bbb128b6753ee8bf3943ad7e6/oslo.serialization-5.0.0.tar.gz"
-    sha256 "2845328d0f47dc8a23fed2a82253e90acff0aa731dbd24f379cf8e50e6cc66ba"
+    url "https://files.pythonhosted.org/packages/94/77/636b8f94ff96fc1e704d94f31edb930a63aaffb4aae35391b240f601f415/oslo.serialization-5.1.0.tar.gz"
+    sha256 "a4847df32681c1a84bd13a2dba7a6ec9d5b44884de632521192f6dc750ce0984"
   end
 
   resource "oslo.utils" do
@@ -504,8 +504,8 @@ class Ansible < Formula
   end
 
   resource "stevedore" do
-    url "https://files.pythonhosted.org/packages/66/c0/26afabea111a642f33cfd15f54b3dbe9334679294ad5c0423c556b75eba2/stevedore-4.1.1.tar.gz"
-    sha256 "7f8aeb6e3f90f96832c301bff21a7eb5eefbe894c88c506483d355565d88cc1a"
+    url "https://files.pythonhosted.org/packages/f1/25/993d09dc7be3e7927228853c75324104d734bb784bd766b025ebf9f47b16/stevedore-5.0.0.tar.gz"
+    sha256 "2c428d2338976279e8eb2196f7a94910960d9f7ba2f41f3988511e95ca447021"
   end
 
   resource "textfsm" do
