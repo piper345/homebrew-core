@@ -30,7 +30,7 @@ class Numcpp < Formula
               std::cout << a[i] << std::endl;
       }
     EOS
-    system ENV.cxx, "-std=c++14", "test.cpp", "-o", "test", "-I#{include}"
+    system ENV.cxx, "-std=c++17", "test.cpp", "-o", "test", "-I#{include}"
     assert_equal "1\n5\n9\n", shell_output("./test")
   end
 end
